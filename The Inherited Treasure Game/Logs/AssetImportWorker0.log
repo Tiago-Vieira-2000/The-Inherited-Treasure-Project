@@ -146,3 +146,78 @@ System memory in use after: 57.4 MB.
 Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1564.
 Total: 4.036600 ms (FindLiveObjects: 0.313200 ms CreateObjectMapping: 0.059000 ms MarkObjects: 3.595400 ms  DeleteObjects: 0.065500 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001483 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.175 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1112 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 57.3 MB.
+System memory in use after: 57.4 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1567.
+Total: 2.530800 ms (FindLiveObjects: 0.192700 ms CreateObjectMapping: 0.038000 ms MarkObjects: 2.267400 ms  DeleteObjects: 0.030800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 487.855437 seconds.
+  path: Assets/Prefab
+  artifactKey: Guid(8ebdead813f6b8c4a89852d26ebc131f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab using Guid(8ebdead813f6b8c4a89852d26ebc131f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8880e403683c5499b19bc317e3315476') in 0.009750 seconds
+  Import took 0.013054 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.083984 seconds.
+  path: Assets/Prefab/Barrel.prefab
+  artifactKey: Guid(7a8fef2ba75e4e14ca155bcac791e214) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab/Barrel.prefab using Guid(7a8fef2ba75e4e14ca155bcac791e214) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3f94075b7b72a276a262709946c3f37') in 0.445775 seconds
+  Import took 0.449240 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.819085 seconds.
+  path: Assets/Scenes/Barrellevel.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Barrellevel.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6eb6eb9eef9953aab49d7cb9c316f490') in 0.005692 seconds
+  Import took 0.009738 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.012419 seconds.
+  path: Assets/Scenes/ChessLevel.unity
+  artifactKey: Guid(55b7d3233219aab44b52f77c1ae20a75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/ChessLevel.unity using Guid(55b7d3233219aab44b52f77c1ae20a75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '389df8324f2b34c0b3b9053757cf8605') in 0.006402 seconds
+  Import took 0.010695 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001269 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.271 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1112 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 60.5 MB.
+System memory in use after: 60.6 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1578.
+Total: 2.517100 ms (FindLiveObjects: 0.215900 ms CreateObjectMapping: 0.044400 ms MarkObjects: 2.227200 ms  DeleteObjects: 0.028000 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
