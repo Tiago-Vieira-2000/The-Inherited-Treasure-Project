@@ -15,8 +15,8 @@ public class Door : MonoBehaviour
         
     }
 
-    public void changeDoorState() {
-        GameObject.Find(doorName + "/door 1").GetComponent<DoorFlap>().changeDoorState();
-        GameObject.Find(doorName + "/door 2").GetComponent<DoorFlap>().changeDoorState();
+    public void changeDoorState(bool state) {
+        GameObject.Find(doorName + "/door 1").GetComponent<DoorFlap>().changeDoorState(state);
+        GameObject.Find(doorName + "/door 2").GetComponent<DoorFlap>().changeDoorState(state);
     }
 }

@@ -5,39 +5,22 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     public int characterAmount;
-    public int time;
+    private List<string> colours;
     void Start()
     {
+        characterAmount = 1;
         DestroyUnnecessaryObjects();
+        colours = new List<string>();
+        colours.Add("yellow");
+        colours.Add("blue");
+        colours.Add("green");
+        colours.Add("purple");
     }
 
     
     void Update()
     {
-        if (time == 250)
-        {
-            GameObject.Find("door yellow").GetComponent<Door>().changeDoorState();
-        }
-        if (time == 500)
-        {
-            GameObject.Find("door blue").GetComponent<Door>().changeDoorState();
-        }
-        if (time == 750)
-        {
-            GameObject.Find("door purple").GetComponent<Door>().changeDoorState();
-        }
-        if (time == 1000)
-        {
-            GameObject.Find("door green").GetComponent<Door>().changeDoorState();
-        }
-        if (time == 2000)
-        {
-            GameObject.Find("door yellow").GetComponent<Door>().changeDoorState();
-            GameObject.Find("door blue").GetComponent<Door>().changeDoorState();
-            GameObject.Find("door purple").GetComponent<Door>().changeDoorState();
-            GameObject.Find("door green").GetComponent<Door>().changeDoorState();
-        }
-        time++;
+        checkColour();
     }
 
     void DestroyUnnecessaryObjects() {
@@ -50,5 +33,36 @@ public class Game : MonoBehaviour
         if (characterAmount < 3) {
             Destroy(GameObject.Find("AllPlayers"));
         }
+    }
+
+    void checkColour()
+    {
+        foreach (string colour in colours) {
+            checkDoor(colour);
+        }
+    }
+
+    void checkDoor(string colour) {
+        if (characterAmount != 1)
+        {
+            useDoor(colour, checkButton("1Player/Button1 ", colour));
+        }
+        if (characterAmount != 2)
+        {
+            useDoor(colour, checkButton("2Players/Button1 ", colour));
+            useDoor(colour, checkButton("2Players/Button2 ", colour));
+        }
+        if (characterAmount < 3)
+        {
+            
+        }
+    }
+
+    bool checkButton(string button, string colour) {
+        return GameObject.Find(button + colour).GetComponent<Button>().isButtonActive();
+    }
+
+    void useDoor(string colour, bool state) {
+        GameObject.Find("door "+colour).GetComponent<Door>().changeDoorState(state);
     }
 }

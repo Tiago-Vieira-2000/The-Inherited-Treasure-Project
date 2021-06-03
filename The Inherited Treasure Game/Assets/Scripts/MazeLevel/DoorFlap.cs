@@ -69,7 +69,7 @@ public class DoorFlap : MonoBehaviour
         opened = !opened;
     }
 
-    public void changeDoorState() {
-        desireToOpen = !desireToOpen;
+    public void changeDoorState(bool state) {
+        desireToOpen = state;
     }
 }
