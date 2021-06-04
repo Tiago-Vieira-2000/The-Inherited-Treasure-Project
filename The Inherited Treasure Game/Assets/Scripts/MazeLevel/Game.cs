@@ -43,19 +43,33 @@ public class Game : MonoBehaviour
     }
 
     void checkDoor(string colour) {
-        if (characterAmount != 1)
+        if (characterAmount == 1)
         {
-            useDoor(colour, checkButton("1Player/Button1 ", colour));
+            useDoor(colour, checkButton("/1Player/Button1 ", colour+"/Cube (2)"));
         }
-        if (characterAmount != 2)
+        else if (characterAmount == 2)
         {
-            useDoor(colour, checkButton("2Players/Button1 ", colour));
-            useDoor(colour, checkButton("2Players/Button2 ", colour));
+            useDoor(colour, checkButton("/2Players/Button1 ", colour + "/Cube (2)"));
+            useDoor(colour, checkButton("/2Players/Button2 ", colour + "/Cube (2)"));
         }
-        if (characterAmount < 3)
+        else
         {
-            
+            useDoor(colour, checkTwoButtonsActive(colour));
         }
+    }
+
+    bool checkTwoButtonsActive(string colour) {
+        int counter = 0;
+        for (int i = 1; i<=4; i++)
+        {
+            if (checkButton("/AllPlayers/Button"+i+" ", colour + "/Cube (2)")) {
+                counter++;
+            }
+            if (counter >= 2) {
+                return true;
+            }
+        }
+        return false;
     }
 
     bool checkButton(string button, string colour) {

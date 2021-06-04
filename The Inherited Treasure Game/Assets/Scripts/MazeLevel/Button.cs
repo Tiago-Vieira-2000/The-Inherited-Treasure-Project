@@ -31,13 +31,19 @@ public class Button : MonoBehaviour
     {
         if (other.CompareTag("Box") || other.CompareTag("Character"))
         {
-            moving = true;
+            if (!isActive)
+            {
+                moving = true;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        moving = true;
+        if (isActive)
+        {
+            moving = true;
+        }
     }
 
     public bool isButtonActive() {
@@ -54,6 +60,7 @@ public class Button : MonoBehaviour
         else {
             isActive = true;
             moving = false;
+            fixPosition();
         }
     }
 
@@ -66,7 +73,17 @@ public class Button : MonoBehaviour
         else{
             isActive = false;
             moving = false;
+            fixPosition();
         }
     }
 
+    void fixPosition() {
+        position = transform.position.y;
+        if (position < 2.021548){
+            transform.position = new Vector3(transform.position.x, 2.021548f, transform.position.z);
+        }
+        if (position > 2.16526) {
+            transform.position = new Vector3(transform.position.x, 2.16526f, transform.position.z);
+        }
+    }
 }

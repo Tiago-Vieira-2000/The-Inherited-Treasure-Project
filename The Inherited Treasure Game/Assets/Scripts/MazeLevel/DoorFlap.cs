@@ -6,10 +6,11 @@ using UnityEngine;
 public class DoorFlap : MonoBehaviour
 {
     private float RotationSpeed = 50.0f;
-    //private float MovementSpeed = 1.0f;
+    private float MovementSpeed = 0.5f;
     private bool opened;
     private float rotation;
-    private bool desireToOpen;
+    private bool desiredState;
+    private bool moving;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class DoorFlap : MonoBehaviour
             RotationSpeed = -50.0f;
         }
         opened = false;
+        moving = false;
     }
 
     
@@ -27,11 +29,11 @@ public class DoorFlap : MonoBehaviour
     }
 
     private void changeDoorStateAnimation() {
-        if (!opened && desireToOpen)
+        if (desiredState && !opened)
         {
             openAnimation();
         }
-        else if(opened && !desireToOpen)
+        else if (moving || (!desiredState && opened))
         {
             closeAnimation();
         }
@@ -39,37 +41,40 @@ public class DoorFlap : MonoBehaviour
 
     private void openAnimation()
     {
+        moving = true;
         rotation = this.gameObject.transform.localRotation.eulerAngles.y;
         transform.Rotate(0, RotationSpeed * Time.deltaTime, 0);
-        //transform.Translate(MovementSpeed * Time.deltaTime, 0, 0, Space.Self);
+        transform.Translate(-MovementSpeed * Time.deltaTime, 0, 0, Space.Self);
         if (RotationSpeed>0) {
-            if (rotation >= 74) { setOpened(); }
+            if (rotation >= 74) { setOpened(true); }
         }
         else {
-            if (rotation <= 286 && rotation != 0) { setOpened(); }
+            if (rotation <= 286 && rotation != 0) { setOpened(true); }
         }
     }
 
     private void closeAnimation()
     {
+        moving = true;
         rotation = this.gameObject.transform.localRotation.eulerAngles.y;
         transform.Rotate(0, -RotationSpeed * Time.deltaTime, 0);
-        //transform.Translate(MovementSpeed * Time.deltaTime, 0, 0, Space.Self);
+        transform.Translate(MovementSpeed * Time.deltaTime, 0, 0, Space.Self);
         if (RotationSpeed > 0)
         {
-            if (rotation <= 1) { setOpened(); }
+            if (rotation <= 1) { setOpened(false); }
         }
         else
         {
-            if (rotation >= 359) { setOpened(); }
+            if (rotation >= 359) { setOpened(false); }
         }
     }
 
-    private void setOpened() {
-        opened = !opened;
+    private void setOpened(bool state) {
+        opened = state;
+        moving = false;
     }
 
     public void changeDoorState(bool state) {
-        desireToOpen = state;
+        desiredState = state;
     }
 }
