@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
     public int characterAmount;
     private List<string> colours;
+    private float time = 0;
+    private bool finished = false;
+
     void Start()
     {
         characterAmount = 1;
@@ -20,7 +24,34 @@ public class Game : MonoBehaviour
     
     void Update()
     {
-        checkColour();
+        if (!finished) {
+            checkColour();
+            updateTimer();
+        }
+    }
+
+    void updateTimer() {
+        time += Time.deltaTime;
+        int mins = 0;
+        int secs = (int)time;
+
+        while (secs>=60) {
+            mins++;
+            secs -= 60;
+        }
+
+        string minutes = mins.ToString();
+        string seconds = secs.ToString();
+
+        if (secs < 10) {
+            seconds = "0"+secs.ToString();
+        }
+        if (mins < 10)
+        {
+            minutes = "0" + mins.ToString();
+        }
+
+        GameObject.Find("Time").GetComponent<Text>().text = minutes + ":" + seconds;
     }
 
     void DestroyUnnecessaryObjects() {
@@ -78,5 +109,9 @@ public class Game : MonoBehaviour
 
     void useDoor(string colour, bool state) {
         GameObject.Find("door "+colour).GetComponent<Door>().changeDoorState(state);
+    }
+
+    void setFinished() {
+        finished = !finished;
     }
 }
