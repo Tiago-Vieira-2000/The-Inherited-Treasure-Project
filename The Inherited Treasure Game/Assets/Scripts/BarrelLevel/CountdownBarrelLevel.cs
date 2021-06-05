@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CountdownBarrelLevel : MonoBehaviour
 {
     public Text timeLeft;
-    public float time = 30;
+    public float time = 10;
+    public string nextLevel;
+    public NextLevelMenu menu;
 
     void Start()
     {
@@ -23,6 +26,7 @@ public class CountdownBarrelLevel : MonoBehaviour
         else
         {
             timeLeft.gameObject.SetActive(false);
+            menu.Setup();
             Debug.Log("Game Over");
         }
 
