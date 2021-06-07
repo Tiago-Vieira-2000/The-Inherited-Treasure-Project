@@ -10,6 +10,11 @@ public class Game : MonoBehaviour
     private float time = 0;
     private bool finished = false;
 
+    /// <summary>
+    /// Method that starts the Game, destroys any unwanted object depending on characterAmount
+    /// colours         -> colours available in the game (boxes, buttons, doors)
+    /// characterAmount -> amount of characters that are still alive
+    /// </summary>
     void Start()
     {
         characterAmount = 1;
@@ -21,15 +26,20 @@ public class Game : MonoBehaviour
         colours.Add("purple");
     }
 
-    
+    /// <summary>
+    /// Method responsable for contantly checking if any element of the game needs to be updated.
+    /// </summary>
     void Update()
     {
         if (!finished) {
-            checkColour();
+            checkAllDoors();
             updateTimer();
         }
     }
 
+    /// <summary>
+    /// Method responsable for updating the Timer.
+    /// </summary>
     void updateTimer() {
         time += Time.deltaTime;
         int mins = 0;
@@ -54,6 +64,9 @@ public class Game : MonoBehaviour
         GameObject.Find("Time").GetComponent<Text>().text = minutes + ":" + seconds;
     }
 
+    /// <summary>
+    /// Method responsable for destroying any unwanted object depending on characterAmount
+    /// </summary>
     void DestroyUnnecessaryObjects() {
         if (characterAmount != 1) {
             Destroy(GameObject.Find("1Player"));
@@ -66,13 +79,21 @@ public class Game : MonoBehaviour
         }
     }
 
-    void checkColour()
+    /// <summary>
+    /// Method responsable for checking if any door needs to be updated
+    /// </summary>
+    void checkAllDoors()
     {
         foreach (string colour in colours) {
             checkDoor(colour);
         }
     }
 
+    /// <summary>
+    /// Method responsable for checking if the door needs to be updated
+    /// Logic depends on characterAmount
+    /// </summary>
+    /// <param name="colour">colour of the door</param>
     void checkDoor(string colour) {
         if (characterAmount == 1)
         {
@@ -89,6 +110,11 @@ public class Game : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsable for checking if at least two buttons are beeing pressed
+    /// </summary>
+    /// <param name="colour">colour of the buttons</param>
+    /// <returns>True if two or more buttons are beeing pressed</returns>
     bool checkTwoButtonsActive(string colour) {
         int counter = 0;
         for (int i = 1; i<=4; i++)
@@ -103,10 +129,21 @@ public class Game : MonoBehaviour
         return false;
     }
 
-    bool checkButton(string button, string colour) {
-        return GameObject.Find(button + colour).GetComponent<Button>().isButtonActive();
+    /// <summary>
+    /// Method responsable for checking if the button is beeing pressed
+    /// </summary>
+    /// <param name="buttonName">name of the button</param>
+    /// <param name="colour">colour of the button</param>
+    /// <returns></returns>
+    bool checkButton(string buttonName, string colour) {
+        return GameObject.Find(buttonName + colour).GetComponent<Button>().isButtonActive();
     }
 
+    /// <summary>
+    /// Method responsable for changing the state of a door
+    /// </summary>
+    /// <param name="colour">Colour of the door</param>
+    /// <param name="state">If door needs to be opened</param>
     void useDoor(string colour, bool state) {
         GameObject.Find("door "+colour).GetComponent<Door>().changeDoorState(state);
     }
