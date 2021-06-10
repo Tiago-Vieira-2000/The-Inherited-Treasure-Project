@@ -13,6 +13,7 @@ public class CountdownBarrelLevel : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         timeLeft.text = "Tempo Restante: " + time;
     }
 
@@ -26,8 +27,8 @@ public class CountdownBarrelLevel : MonoBehaviour
         else
         {
             timeLeft.gameObject.SetActive(false);
+            Time.timeScale = 0;
             menu.Setup();
-            Debug.Log("Game Over");
         }
 
     }
