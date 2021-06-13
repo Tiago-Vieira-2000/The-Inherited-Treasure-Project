@@ -23,6 +23,7 @@ public class NextLevelMenu : MonoBehaviour
 
     public void NextLevel(string nextLevel)
     {
+        save.nextLevelData();
         SceneManager.LoadScene(nextLevel.ToString());
         
     }
