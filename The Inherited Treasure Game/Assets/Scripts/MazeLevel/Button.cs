@@ -41,7 +41,7 @@ public class Button : MonoBehaviour
     /// <param name="other">Object that touches the Button</param>
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Box") || other.CompareTag("Character"))
+        if (other.CompareTag("Box") || other.CompareTag("Player"))
         {
             if (!isActive)
             {

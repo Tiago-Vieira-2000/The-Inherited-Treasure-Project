@@ -9,6 +9,8 @@ public class Game : MonoBehaviour
     private List<string> colours;
     private float time = 0;
     private bool finished = false;
+    public SaveSystem startGame;
+    public NextLevelMenu menu;
 
     /// <summary>
     /// Method that starts the Game, destroys any unwanted object depending on characterAmount
@@ -17,6 +19,8 @@ public class Game : MonoBehaviour
     /// </summary>
     void Start()
     {
+        startGame = GetComponent<SaveSystem>();
+        //characterAmount = startGame.getPlayers();
         characterAmount = 1;
         DestroyUnnecessaryObjects();
         colours = new List<string>();
@@ -31,9 +35,16 @@ public class Game : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (!finished) {
+        if (!finished)
+        {
             checkAllDoors();
             updateTimer();
+            if (GameObject.Find("Goal").GetComponent<Goal>().HowManyFinishedPlayers()>=characterAmount) {
+                setFinished();
+            }
+        }
+        else {
+            menu.Setup();
         }
     }
 
@@ -76,6 +87,10 @@ public class Game : MonoBehaviour
         }
         if (characterAmount < 3) {
             Destroy(GameObject.Find("AllPlayers"));
+        }
+        for (int i = 4-characterAmount; i > 0; i--)
+        {
+            Destroy(GameObject.Find("Player"+i));
         }
     }
 
