@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal : MonoBehaviour
+public class MazeGoal : MonoBehaviour
 {
     private int finishedPlayers;
     void Start()

@@ -488,7 +488,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ChessLevel
+          m_StringArgument: Obstacle course
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6224819681184901310
@@ -503,6 +503,7 @@ GameObject:
   - component: {fileID: 6224819681184901307}
   - component: {fileID: 6224819681184901304}
   - component: {fileID: 6224819681184901306}
+  - component: {fileID: 7062536616763497293}
   m_Layer: 5
   m_Name: NextlevelMenu
   m_TagString: Untagged
@@ -582,4 +583,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9513f01be13da54a91d40e8107b114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sLevelToLoad: ChessLevel
+  save: {fileID: 0}
+--- !u!114 &7062536616763497293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224819681184901310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122fe41e39c590e4d99e5f9fff75f072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

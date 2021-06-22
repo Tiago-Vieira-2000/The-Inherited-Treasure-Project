@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Game : MonoBehaviour
+public class MazeGame : MonoBehaviour
 {
     public int characterAmount;
     private List<string> colours;
     private float time = 0;
     private bool finished = false;
     public SaveSystem startGame;
-    public NextLevelMenu menu;
+    public NextLevelMenu nextLevelMenu;
+    public GameOver gameOverMenu;
 
     /// <summary>
     /// Method that starts the Game, destroys any unwanted object depending on characterAmount
@@ -20,9 +21,11 @@ public class Game : MonoBehaviour
     void Start()
     {
         startGame = GetComponent<SaveSystem>();
-        //characterAmount = startGame.getPlayers();
-        characterAmount = 1;
+        //startGame.restartData();
+        characterAmount = startGame.getPlayers();
+        //characterAmount = 1;
         DestroyUnnecessaryObjects();
+        KillCharacters();
         colours = new List<string>();
         colours.Add("yellow");
         colours.Add("blue");
@@ -39,12 +42,35 @@ public class Game : MonoBehaviour
         {
             checkAllDoors();
             updateTimer();
-            if (GameObject.Find("Goal").GetComponent<Goal>().HowManyFinishedPlayers()>=characterAmount) {
+            if (GameObject.Find("Goal").GetComponent<MazeGoal>().HowManyFinishedPlayers()>=characterAmount) {
                 setFinished();
             }
         }
         else {
-            menu.Setup();
+            int characterLimit = 4;
+            
+            if (time > 0) {
+                characterLimit = 0;
+            }else if (time > 500){
+                characterLimit = 1;
+            }else if (time > 400){
+                characterLimit = 2;
+            }else if (time > 300){
+                characterLimit = 3;
+            }
+
+            while (characterLimit < characterAmount)
+            {
+                characterAmount--;
+                KillCharacters();
+            }
+
+            if (characterLimit>0) {
+                nextLevelMenu.Setup();
+            }
+            else {
+                gameOverMenu.Setup();
+            }
         }
     }
 
@@ -88,9 +114,13 @@ public class Game : MonoBehaviour
         if (characterAmount < 3) {
             Destroy(GameObject.Find("AllPlayers"));
         }
-        for (int i = 4-characterAmount; i > 0; i--)
+    }
+
+    void KillCharacters()
+    {
+        for (int i = 4 - characterAmount; i > 0; i--)
         {
-            Destroy(GameObject.Find("Player"+i));
+            Destroy(GameObject.Find("Player" + i));
         }
     }
 

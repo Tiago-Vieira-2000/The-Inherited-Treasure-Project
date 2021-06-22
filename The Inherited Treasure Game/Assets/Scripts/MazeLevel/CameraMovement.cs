@@ -55,8 +55,14 @@ public class CameraMovement : MonoBehaviour
         {
             
         }
-
-        location /= characterAmount;
-        location -= 18.3f;
+        if (characterAmount>0)
+        {
+            location /= characterAmount;
+            location -= 18.3f;
+        }
+        else
+        {
+            location = 18.3f;
+        }   
     }
 }
