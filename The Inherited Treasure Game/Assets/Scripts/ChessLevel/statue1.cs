@@ -5,13 +5,17 @@ using UnityEngine;
 public class statue1 : MonoBehaviour
 {
     // Start is called before the first frame update
-    float time = 5;
-    int startDegree = 180;
-    int endDegree =0;
+    private float time = 5;
+    private float RotationSpeed = 50.0f;
+    private int startDegree = 180;
+    private int endDegree =0;
+    private float rotation;
     public Rigidbody rb;
+    private bool moving;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        moving = true;
     }
 
     // Update is called once per frame
@@ -22,13 +26,13 @@ public class statue1 : MonoBehaviour
         {
             time -= Time.deltaTime;
             Debug.Log(Mathf.Round(time).ToString());
-            transform.Rotate (0,50*Time.deltaTime,0); //roda 50 graus por segundo no eixo do y
+            transform.Rotate (0,RotationSpeed * Time.deltaTime,0); //roda 50 graus por segundo no eixo do y
         }
         else
         {
             endDegree = pattern1(startDegree);
             startDegree = endDegree;
-            enabled = false;
+            //enabled = false;
             Debug.Log("Fim da Ronda");
         }
         
@@ -37,9 +41,19 @@ public class statue1 : MonoBehaviour
     int pattern1(int degree){
         //45 graus para cada movimento
         //padrão estátuda 1 : +3
+        rotation = this.gameObject.transform.localRotation.eulerAngles.y;
+        transform.Rotate (0,RotationSpeed * Time.deltaTime,0);
         degree = degree + 135;
+        while(moving){
+            if(rotation==degree){
+                 transform.Rotate (0,0,0);
+                 moving= false;
+            }
+        }
+        //transform.rotation = Quaternion.Euler(0, degree, 0);     
+       
+        startDegree = degree;
         Debug.Log(degree);
-        transform.rotation = Quaternion.Euler(0, degree, 0);
         return degree;
     }
 }
