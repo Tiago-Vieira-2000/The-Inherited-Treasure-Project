@@ -8,7 +8,7 @@ public class Bottom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameObject.Find("Platform").GetComponent<ObstacleCourseGame>().characterDied();
+            GameObject.Find("Platform").GetComponent<ObstacleCourseGame>().characterDied(other.gameObject.name);
             Destroy(other.gameObject);
         }
     }

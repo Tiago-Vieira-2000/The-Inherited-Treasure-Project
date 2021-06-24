@@ -35,11 +35,28 @@ public class ObstacleCourseGame : MonoBehaviour
     {
         for (int i = 4 - characterAmount; i > 0; i--)
         {
+            turnLightsRed("Player" + i);
             Destroy(GameObject.Find("Player" + i));
         }
     }
 
-    public void characterDied() {
+    public void characterDied(string name) {
+        turnLightsRed(name);
         characterAmount--;
+    }
+
+    void turnLightsRed(string name) {
+        Light[] lights;
+        lights = FindObjectsOfType(typeof(Light)) as Light[];
+        foreach (Light light in lights)
+        {
+            if (light.name.Contains(name.Remove(0, 6)))
+            {
+                light.color = Color.red;
+            }
+        }
+
+
+        
     }
 }
