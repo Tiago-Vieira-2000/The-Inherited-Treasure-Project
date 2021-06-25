@@ -8,14 +8,16 @@ public class statue1 : MonoBehaviour
     private float time = 5;
     private float RotationSpeed = 50.0f;
     private int startDegree = 180;
-    private int endDegree =0;
+    //private int endDegree =0;
     private float rotation;
     public Rigidbody rb;
     private bool moving;
+    private bool math;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         moving = true;
+        math = false;
     }
 
     // Update is called once per frame
@@ -30,30 +32,38 @@ public class statue1 : MonoBehaviour
         }
         else
         {
-            endDegree = pattern1(startDegree);
-            startDegree = endDegree;
+            if(!math){
+                startDegree+= 135;
+                math= true;
+            }
+            pattern1(startDegree);
+            //startDegree = endDegree;
             //enabled = false;
-            Debug.Log("Fim da Ronda");
+            //Debug.Log("Fim da Ronda");
         }
         
     }
 
-    int pattern1(int degree){
+    private void pattern1(int degree){
         //45 graus para cada movimento
         //padrão estátuda 1 : +3
         rotation = this.gameObject.transform.localRotation.eulerAngles.y;
-        transform.Rotate (0,RotationSpeed * Time.deltaTime,0);
-        degree = degree + 135;
-        while(moving){
-            if(rotation==degree){
+        //degree = degree + 135;
+        if(moving){
+            Debug.Log(rotation);
+            Debug.Log(degree);
+            transform.Rotate (0,RotationSpeed * Time.deltaTime,0);
+            if(rotation>=degree){
                  transform.Rotate (0,0,0);
                  moving= false;
+                 transform.rotation = Quaternion.Euler(0, degree, 0);
+                 Debug.Log("Parou");
             }
         }
         //transform.rotation = Quaternion.Euler(0, degree, 0);     
        
-        startDegree = degree;
-        Debug.Log(degree);
-        return degree;
+        //startDegree = degree;
+        //Debug.Log(degree);
+        //return degree;
     }
 }
