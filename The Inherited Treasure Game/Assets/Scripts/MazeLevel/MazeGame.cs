@@ -98,7 +98,10 @@ public class MazeGame : MonoBehaviour
             minutes = "0" + mins.ToString();
         }
 
-        GameObject.Find("Time").GetComponent<Text>().text = minutes + ":" + seconds;
+        if (secs>0 || mins>0)
+        {
+            GameObject.Find("Time").GetComponent<Text>().text = minutes + ":" + seconds;
+        }        
     }
 
     /// <summary>
