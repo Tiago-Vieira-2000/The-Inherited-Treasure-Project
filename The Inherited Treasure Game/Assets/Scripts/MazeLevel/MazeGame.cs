@@ -23,7 +23,7 @@ public class MazeGame : MonoBehaviour
         startGame = GetComponent<SaveSystem>();
         //startGame.restartData();
         characterAmount = startGame.getPlayers();
-        //characterAmount = 1;
+        //characterAmount = 2;
         DestroyUnnecessaryObjects();
         KillCharacters();
         colours = new List<string>();
