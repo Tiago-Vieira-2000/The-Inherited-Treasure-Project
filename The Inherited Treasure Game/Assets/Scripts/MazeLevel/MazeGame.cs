@@ -23,7 +23,7 @@ public class MazeGame : MonoBehaviour
         startGame = GetComponent<SaveSystem>();
         //startGame.restartData();
         characterAmount = startGame.getPlayers();
-        //characterAmount = 1;
+        //characterAmount = 2;
         DestroyUnnecessaryObjects();
         KillCharacters();
         colours = new List<string>();
@@ -42,14 +42,19 @@ public class MazeGame : MonoBehaviour
         {
             checkAllDoors();
             updateTimer();
-            if (GameObject.Find("Goal").GetComponent<MazeGoal>().HowManyFinishedPlayers()>=characterAmount) {
+            if (GameObject.Find("Goal").GetComponent<MazeGoal>().HowManyFinishedPlayers()>=characterAmount
+                || time > 600) {
                 setFinished();
+            }
+            if ((int)time % 75 == 0)
+            {
+                turnLightsRed();
             }
         }
         else {
             int characterLimit = 4;
             
-            if (time > 0) {
+            if (time > 600) {
                 characterLimit = 0;
             }else if (time > 500){
                 characterLimit = 1;
@@ -70,6 +75,27 @@ public class MazeGame : MonoBehaviour
             }
             else {
                 gameOverMenu.Setup();
+            }
+        }
+    }
+
+    void turnLightsRed()
+    {
+        int rows = 0;
+        float seconds = time;
+        while (seconds >= 75)
+        {
+            rows++;
+            seconds -= 75;
+        }
+        string name = ""+rows;
+        Light[] lights;
+        lights = FindObjectsOfType(typeof(Light)) as Light[];
+        foreach (Light light in lights)
+        {
+            if (light.name.Contains(name))
+            {
+                light.color = Color.red;
             }
         }
     }
@@ -98,7 +124,10 @@ public class MazeGame : MonoBehaviour
             minutes = "0" + mins.ToString();
         }
 
-        GameObject.Find("Time").GetComponent<Text>().text = minutes + ":" + seconds;
+        if (secs>0 || mins>0)
+        {
+            GameObject.Find("Time").GetComponent<Text>().text = minutes + ":" + seconds;
+        }        
     }
 
     /// <summary>
