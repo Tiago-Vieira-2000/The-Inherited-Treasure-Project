@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+[RequireComponent(typeof(SaveSystem))]
 
 public class CountdownBarrelLevel : MonoBehaviour
 {
     public Text timeLeft;
     public float time = 10;
     public string nextLevel;
+    string levelType;
     public NextLevelMenu menu;
+    public LevelCompletedMenu menu2;
+    public SaveSystem saveSystem;
 
     void Start()
     {
         Time.timeScale = 1;
         timeLeft.text = "Tempo Restante: " + time;
+        saveSystem = GetComponent<SaveSystem>();
     }
 
     private void Update()
@@ -26,9 +31,22 @@ public class CountdownBarrelLevel : MonoBehaviour
         }
         else
         {
-            timeLeft.gameObject.SetActive(false);
-            Time.timeScale = 0;
-            menu.Setup();
+
+            levelType = saveSystem.getGameType();
+            if(levelType == "FULL")
+            {
+                timeLeft.gameObject.SetActive(false);
+                Time.timeScale = 0;
+                menu.Setup();
+            }
+            else if (levelType == "SINGLE")
+            {
+                Debug.Log("YOU ARE HERE");
+                timeLeft.gameObject.SetActive(false);
+                Time.timeScale = 0;
+                menu2.Setup();
+            }
+            
         }
 
     }

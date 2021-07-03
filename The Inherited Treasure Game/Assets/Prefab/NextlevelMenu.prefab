@@ -479,7 +479,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6224819681184901306}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NextLevelMenu, Assembly-CSharp
         m_MethodName: NextLevel
         m_Mode: 5
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 6224819681184901305}
   - component: {fileID: 6224819681184901307}
   - component: {fileID: 6224819681184901304}
-  - component: {fileID: 6224819681184901306}
+  - component: {fileID: 592101790841381473}
   - component: {fileID: 7062536616763497293}
   m_Layer: 5
   m_Name: NextlevelMenu
@@ -571,7 +571,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6224819681184901306
+--- !u!114 &592101790841381473
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

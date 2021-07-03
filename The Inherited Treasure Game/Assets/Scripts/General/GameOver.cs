@@ -6,11 +6,19 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     public SaveSystem loadSave;
+    public GameObject saveButton;
     public void Setup()
     {
+        int diff = loadSave.getDifficultyLevel();
+        loadSave = GetComponent<SaveSystem>();
         gameObject.SetActive(true);
         Time.timeScale = 0;
-        loadSave = GetComponent<SaveSystem>();
+        if(diff == 3)
+        {
+            saveButton.SetActive(false);
+        }
+        
+        
     }
 
     public void QuitGame()
@@ -18,6 +26,7 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
+
 
     public void loadLastSave()
     {

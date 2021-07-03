@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(GameOver))]
+
 
 
 public class deathZone : MonoBehaviour
 {
     int count = 0;
     public GameOver gameOverMenu;
+    public LevelCompletedMenu gameOverSingle;
+    public SaveSystem saveSystem;
+
+    private void Start()
+    {
+        saveSystem = GetComponent<SaveSystem>();    
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,12 +36,18 @@ public class deathZone : MonoBehaviour
 
     private void Update()
     {
+        string typeGame = saveSystem.getGameType();
         if (GameObject.FindGameObjectsWithTag("Player").Length == 0)
         {
-            gameOverMenu.Setup();
-            Debug.Log("All players dead");
+            if (typeGame == "FULL")
+            {
+                gameOverMenu.Setup();
+            }
+            else if(typeGame == "SINGLE")
+            {
+                gameOverSingle.Setup();
+            }
         }
-
     }
 
 }
