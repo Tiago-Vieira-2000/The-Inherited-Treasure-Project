@@ -54,9 +54,6 @@ public class ObstacleCourseGame : MonoBehaviour
             {
                 light.color = Color.red;
             }
-        }
-
-
-        
+        }        
     }
 }
