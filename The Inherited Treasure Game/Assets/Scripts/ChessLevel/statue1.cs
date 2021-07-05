@@ -36,7 +36,7 @@ public class statue1 : MonoBehaviour
                 startDegree+= 135;
                 math= true;
             }
-            pattern1(startDegree);
+            pattern(startDegree);
             //startDegree = endDegree;
             //enabled = false;
             //Debug.Log("Fim da Ronda");
@@ -44,7 +44,7 @@ public class statue1 : MonoBehaviour
         
     }
 
-    private void pattern1(int degree){
+    private void pattern(int degree){
         //45 graus para cada movimento
         //padrão estátuda 1 : +3
         rotation = this.gameObject.transform.localRotation.eulerAngles.y;
