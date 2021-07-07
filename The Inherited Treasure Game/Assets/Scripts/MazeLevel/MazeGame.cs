@@ -23,7 +23,7 @@ public class MazeGame : MonoBehaviour
         startGame = GetComponent<SaveSystem>();
         //startGame.restartData();
         characterAmount = startGame.getPlayers();
-        //characterAmount = 2;
+        //characterAmount = 4;
         DestroyUnnecessaryObjects();
         KillCharacters();
         colours = new List<string>();
@@ -175,8 +175,8 @@ public class MazeGame : MonoBehaviour
         }
         else if (characterAmount == 2)
         {
-            useDoor(colour, checkButton("/2Players/Button1 ", colour + "/Cube (2)"));
-            useDoor(colour, checkButton("/2Players/Button2 ", colour + "/Cube (2)"));
+            bool state = checkButton("/2Players/Button1 ", colour + "/Cube (2)") || checkButton("/2Players/Button2 ", colour + "/Cube (2)");
+            useDoor(colour, state);
         }
         else
         {
