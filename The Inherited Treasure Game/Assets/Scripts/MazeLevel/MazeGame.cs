@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,7 @@ public class MazeGame : MonoBehaviour
         startGame = GetComponent<SaveSystem>();
         //startGame.restartData();
         characterAmount = startGame.getPlayers();
-        //characterAmount = 4;
+        //characterAmount = 1;
         DestroyUnnecessaryObjects();
         KillCharacters();
         colours = new List<string>();
@@ -171,11 +172,14 @@ public class MazeGame : MonoBehaviour
     void checkDoor(string colour) {
         if (characterAmount == 1)
         {
-            useDoor(colour, checkButton("/1Player/Button1 ", colour+"/Cube (2)"));
+            bool state = checkButton("/1Player/Button1 ", colour + "/Cube (2)")
+                && checkButton("/1Player/Button2 ", colour + "/Cube (2)");
+            useDoor(colour, state);
         }
-        else if (characterAmount == 2)
+        else if (characterAmount == 1 || characterAmount == 2)
         {
-            bool state = checkButton("/2Players/Button1 ", colour + "/Cube (2)") || checkButton("/2Players/Button2 ", colour + "/Cube (2)");
+            bool state = checkButton("/2Players/Button1 ", colour + "/Cube (2)")
+                || checkButton("/2Players/Button2 ", colour + "/Cube (2)");
             useDoor(colour, state);
         }
         else
@@ -224,5 +228,16 @@ public class MazeGame : MonoBehaviour
 
     void setFinished() {
         finished = !finished;
+    }
+    public bool onePlayer()
+    {
+        if (characterAmount == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
