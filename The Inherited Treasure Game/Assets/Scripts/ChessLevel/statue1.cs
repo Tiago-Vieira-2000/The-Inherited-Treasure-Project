@@ -13,6 +13,7 @@ public class statue1 : MonoBehaviour
     public Rigidbody rb;
     private bool moving;
     private bool math;
+    public GameObject detector3;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -27,7 +28,7 @@ public class statue1 : MonoBehaviour
         if (time > 0)
         {
             time -= Time.deltaTime;
-            Debug.Log(Mathf.Round(time).ToString());
+            //Debug.Log(Mathf.Round(time).ToString());
             transform.Rotate (0,RotationSpeed * Time.deltaTime,0); //roda 50 graus por segundo no eixo do y
         }
         else
@@ -40,6 +41,7 @@ public class statue1 : MonoBehaviour
             //startDegree = endDegree;
             //enabled = false;
             //Debug.Log("Fim da Ronda");
+            checkKill(startDegree);
         }
         
     }
@@ -50,8 +52,8 @@ public class statue1 : MonoBehaviour
         rotation = this.gameObject.transform.localRotation.eulerAngles.y;
         //degree = degree + 135;
         if(moving){
-            Debug.Log(rotation);
-            Debug.Log(degree);
+            //Debug.Log(rotation);
+            //Debug.Log(degree);
             transform.Rotate (0,RotationSpeed * Time.deltaTime,0);
             if(rotation>=degree){
                  transform.Rotate (0,0,0);
@@ -65,5 +67,15 @@ public class statue1 : MonoBehaviour
         //startDegree = degree;
         //Debug.Log(degree);
         //return degree;
+    }
+    private void checkKill(int degree){
+        if(detector3.GetComponent<playerDetector>().EnteredTrigger){
+            if(degree == 315 && !moving){
+                Destroy(detector3.GetComponent<playerDetector>().CollisionWith);
+                Debug.Log("Personagem Morreu");
+            }
+        }
+        
+
     }
 }
