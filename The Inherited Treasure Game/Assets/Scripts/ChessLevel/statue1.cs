@@ -13,7 +13,8 @@ public class statue1 : MonoBehaviour
     public Rigidbody rb;
     private bool moving;
     private bool math;
-    public GameObject detector3;
+    public GameObject detectorF;
+    public GameObject detectorB;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -38,19 +39,14 @@ public class statue1 : MonoBehaviour
                 math= true;
             }
             pattern(startDegree);
-            //startDegree = endDegree;
-            //enabled = false;
-            //Debug.Log("Fim da Ronda");
-            checkKill(startDegree);
+            checkKill();
+            checkGem();
         }
         
     }
 
     private void pattern(int degree){
-        //45 graus para cada movimento
-        //padrão estátuda 1 : +3
         rotation = this.gameObject.transform.localRotation.eulerAngles.y;
-        //degree = degree + 135;
         if(moving){
             //Debug.Log(rotation);
             //Debug.Log(degree);
@@ -62,20 +58,22 @@ public class statue1 : MonoBehaviour
                  Debug.Log("Parou");
             }
         }
-        //transform.rotation = Quaternion.Euler(0, degree, 0);     
-       
-        //startDegree = degree;
-        //Debug.Log(degree);
-        //return degree;
     }
-    private void checkKill(int degree){
-        if(detector3.GetComponent<playerDetector>().EnteredTrigger){
-            if(degree == 315 && !moving){
-                Destroy(detector3.GetComponent<playerDetector>().CollisionWith);
+    private void checkKill(){
+        if(detectorF.GetComponent<playerDetector>().EnteredTrigger){
+            if(!moving){
+                Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
                 Debug.Log("Personagem Morreu");
             }
         }
-        
-
+    }   
+    private void checkGem(){
+        if(detectorB.GetComponent<playerDetector>().EnteredTrigger){
+            if(!moving){
+                Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
+                Debug.Log("Personagem Apanhou a Gema");
+            }
+        }
     }
+    
 }

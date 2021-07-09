@@ -15,6 +15,8 @@ public class statue4 : MonoBehaviour
     public Rigidbody rb;
     private bool moving;
     private bool math;
+    public GameObject detectorF;
+    public GameObject detectorB;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -44,7 +46,7 @@ public class statue4 : MonoBehaviour
         if (time > 0)
         {
             time -= Time.deltaTime;
-            Debug.Log(Mathf.Round(time).ToString());
+            //Debug.Log(Mathf.Round(time).ToString());
             transform.Rotate (0,RotationSpeed * Time.deltaTime,0); //roda 50 graus por segundo no eixo do y
         }
         else
@@ -59,33 +61,40 @@ public class statue4 : MonoBehaviour
                 
             }
             pattern(startDegree);
-            //startDegree = endDegree;
-            //enabled = false;
-            //Debug.Log("Fim da Ronda");
+            checkKill();
+            checkGem();
         }
         
     }
 
     private void pattern(int degree){
-        //45 graus para cada movimento
-        //padrão estátuda 1 : +3
         rotation = this.gameObject.transform.localRotation.eulerAngles.y;
-        //degree = degree + 135;
         if(moving){
-            Debug.Log(rotation);
-            Debug.Log(degree);
+            //Debug.Log(rotation);
+            //Debug.Log(degree);
             transform.Rotate (0,RotationSpeed * Time.deltaTime,0);
             if(rotation>=degree){
-                 transform.Rotate (0,0,0);
-                 moving= false;
-                 transform.rotation = Quaternion.Euler(0, degree, 0);
-                 Debug.Log("Parou");
+                transform.Rotate (0,0,0);
+                moving= false;
+                transform.rotation = Quaternion.Euler(0, degree, 0);
+                Debug.Log("Parou");
             }
         }
-        //transform.rotation = Quaternion.Euler(0, degree, 0);     
-       
-        //startDegree = degree;
-        //Debug.Log(degree);
-        //return degree;
+    }
+    private void checkKill(){
+        if(detectorF.GetComponent<playerDetector>().EnteredTrigger){
+            if(!moving){
+                Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
+                Debug.Log("Personagem Morreu");
+            }
+        }
+    }   
+    private void checkGem(){
+        if(detectorB.GetComponent<playerDetector>().EnteredTrigger){
+            if(!moving){
+                Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
+                Debug.Log("Personagem Apanhou a Gema");
+            }
+        }
     }
 }
