@@ -73,14 +73,14 @@ public class statue1 : MonoBehaviour
         if(detectorF.GetComponent<playerDetector>().EnteredTrigger){
             if(!moving){
                 Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
-                Debug.Log("Personagem Morreu");
+                Debug.Log("Personagem Morreu pela estátua");
             }
         }
     }   
     private void checkGem(){
         if(detectorB.GetComponent<playerDetector>().EnteredTrigger){
             if(!moving){
-                Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
+                Destroy(detectorB.GetComponent<playerDetector>().CollisionWith);
                 Debug.Log("Personagem Apanhou a Gema");
             }
         }

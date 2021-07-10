@@ -22,7 +22,7 @@ public class statue5 : MonoBehaviour
         moving = true;
         math = false;
         //Variável para escolher aleatóriamente o padrão de rotação
-        var randomInt = Random.Range(1,5);
+        var randomInt = Random.Range(1,6);
         if(randomInt==1){
             arrayDegree= new int[5] {180, 90, 0, 0, 135};
         }
@@ -103,7 +103,7 @@ public class statue5 : MonoBehaviour
     private void checkGem(){
         if(detectorB.GetComponent<playerDetector>().EnteredTrigger){
             if(!moving){
-                Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
+                Destroy(detectorB.GetComponent<playerDetector>().CollisionWith);
                 Debug.Log("Personagem Apanhou a Gema");
             }
         }
