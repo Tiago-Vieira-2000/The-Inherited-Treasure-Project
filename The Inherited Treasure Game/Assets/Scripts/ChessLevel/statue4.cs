@@ -11,7 +11,6 @@ public class statue4 : MonoBehaviour
     private int currentDegree;
     private int startDegree = 180;
     //private int endDegree =0;
-    private float rotation;
     public Rigidbody rb;
     private bool moving;
     private bool math;
@@ -68,12 +67,12 @@ public class statue4 : MonoBehaviour
     }
 
     private void pattern(int degree){
-        rotation = this.gameObject.transform.localRotation.eulerAngles.y;
+        float rotation = this.gameObject.transform.localRotation.eulerAngles.y;
         if(moving){
             //Debug.Log(rotation);
             //Debug.Log(degree);
             transform.Rotate (0,RotationSpeed * Time.deltaTime,0);
-            if(rotation>=degree){
+           if(stop((int)rotation, degree)){
                 transform.Rotate (0,0,0);
                 moving= false;
                 transform.rotation = Quaternion.Euler(0, degree, 0);
@@ -81,6 +80,14 @@ public class statue4 : MonoBehaviour
             }
         }
     }
+
+    bool stop(int rotation, int degree) {
+        if (rotation == degree){
+            return true;
+        }
+        return false;
+    }
+
     private void checkKill(){
         if(detectorF.GetComponent<playerDetector>().EnteredTrigger){
             if(!moving){
