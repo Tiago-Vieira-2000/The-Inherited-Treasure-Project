@@ -13,7 +13,9 @@ public class Ghost : MonoBehaviour
         originalPosition = transform.position;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// The Ghost Platform is a platform that disapears every few seconds
+    /// </summary>
     void Update()
     {
         if (time > 0)
@@ -27,6 +29,9 @@ public class Ghost : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Instead of actually making the platform disapear, it changes the location of the platform instantly having the same effect
+    /// </summary>
     void changeLocation() {
         if (originalPosition == transform.position) {
             transform.position = new Vector3(100,100,100);

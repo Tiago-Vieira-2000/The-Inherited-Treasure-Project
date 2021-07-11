@@ -31,6 +31,9 @@ public class SlowRotate : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Rotates the platform 45º
+    /// </summary>
     private void rotate()
     {
         float rotation = this.gameObject.transform.localRotation.eulerAngles.y;
@@ -50,6 +53,11 @@ public class SlowRotate : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops the platform when it's on the right angle
+    /// </summary>
+    /// <param name="rotation">Current angle of the platform</param>
+    /// <returns>If the platform is on the right angle</returns>
     bool stop(int rotation) {
         if (rotation == 1 ||
             rotation == 45 ||
@@ -65,6 +73,11 @@ public class SlowRotate : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Detects if the platform moved by checking if platform to a certain angle
+    /// </summary>
+    /// <param name="rotation">Current angle of the platform</param>
+    /// <returns>If the platform moved</returns>
     bool platformMoved(int rotation)
     {
         if (rotation == 22 ||

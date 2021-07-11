@@ -13,6 +13,9 @@ public class Cylinder : MonoBehaviour
         originalPosition = transform.position;
     }
 
+    /// <summary>
+    /// Swings the Cylinder from left to right
+    /// </summary>
     void Update()
     {
         Vector3 a = originalPosition;

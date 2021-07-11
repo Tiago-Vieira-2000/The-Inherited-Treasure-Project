@@ -12,6 +12,9 @@ public class CameraMovement : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, location);
     }
 
+    /// <summary>
+    /// Method that updates the location of tha camera
+    /// </summary>
     private void updateLocation() {
         location = 0;
         int characterAmount = 0;

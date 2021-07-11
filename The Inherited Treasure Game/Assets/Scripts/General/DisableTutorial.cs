@@ -14,7 +14,9 @@ public class DisableTutorial : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Method that stops all GameObjects that rely on time to move to show the tutorial picture
+    /// <summary>
     void Update()
     {
         time += Time.unscaledDeltaTime;        

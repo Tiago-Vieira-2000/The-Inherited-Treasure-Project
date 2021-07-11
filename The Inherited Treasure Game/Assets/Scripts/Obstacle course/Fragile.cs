@@ -22,7 +22,9 @@ public class Fragile : MonoBehaviour
         originalRotation = transform.rotation;
     }
 
-    
+    /// <summary>
+    /// The Fragile Platform fall if a character stand in it for to long
+    /// </summary>
     void Update()
     {
         if (beeingTouched && time < 5){
@@ -50,6 +52,9 @@ public class Fragile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Shaking animation
+    /// </summary>
     private void shake()
     {
         float rotation = this.gameObject.transform.localRotation.eulerAngles.y;
@@ -73,6 +78,9 @@ public class Fragile : MonoBehaviour
         beeingTouched = false;
     }
 
+    /// <summary>
+    /// Moves the platform up to the original location
+    /// </summary>
     private void goUp()
     {
         if (transform.position.y < originalPosition.y)
@@ -81,6 +89,9 @@ public class Fragile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves the platform down
+    /// </summary>
     private void fall()
     {
         if (transform.position.y > -6)
