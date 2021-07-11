@@ -41,7 +41,6 @@ public class CountdownBarrelLevel : MonoBehaviour
             }
             else if (levelType == "SINGLE")
             {
-                Debug.Log("YOU ARE HERE");
                 timeLeft.gameObject.SetActive(false);
                 Time.timeScale = 0;
                 menu2.Setup();
