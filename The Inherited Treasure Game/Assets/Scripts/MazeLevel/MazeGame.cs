@@ -13,6 +13,8 @@ public class MazeGame : MonoBehaviour
     public SaveSystem startGame;
     public NextLevelMenu nextLevelMenu;
     public GameOver gameOverMenu;
+    public LevelCompletedMenu gameOverSingle;
+    public LevelCompletedMenu levelSingle;
 
     /// <summary>
     /// Method that starts the Game, destroys any unwanted object depending on characterAmount
@@ -39,6 +41,7 @@ public class MazeGame : MonoBehaviour
     /// </summary>
     void Update()
     {
+        string levelType = startGame.getGameType();
         if (!finished)
         {
             checkAllDoors();
@@ -72,10 +75,25 @@ public class MazeGame : MonoBehaviour
             }
 
             if (characterLimit>0) {
-                nextLevelMenu.Setup();
-            }
-            else {
-                gameOverMenu.Setup();
+                if(levelType == "SINGLE")
+                {
+                    levelSingle.Setup();
+                }
+                else if(levelType == "FULL")
+                {
+                    nextLevelMenu.Setup();
+                }
+                
+            } else {
+                if (levelType == "SINGLE")
+                {
+                    gameOverSingle.Setup();
+                }
+                else if (levelType == "FULL")
+                {
+                    gameOverMenu.Setup();
+                }
+                
             }
         }
     }

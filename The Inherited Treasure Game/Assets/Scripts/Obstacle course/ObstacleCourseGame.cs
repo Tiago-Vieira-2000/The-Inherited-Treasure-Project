@@ -7,6 +7,8 @@ public class ObstacleCourseGame : MonoBehaviour
     public int characterAmount;
     public SaveSystem startGame;
     public NextLevelMenu nextLevelMenu;
+    public LevelCompletedMenu levelSingle;
+    public LevelCompletedMenu gameOverSingle;
     public GameOver gameOverMenu;
 
     void Start()
@@ -21,13 +23,31 @@ public class ObstacleCourseGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        string levelType = startGame.getGameType();
         if (characterAmount<=0)
         {
-            gameOverMenu.Setup();
+            if(levelType == "FULL")
+            {
+                gameOverMenu.Setup();
+            }
+            else if(levelType == "SINGLE")
+            {
+                gameOverSingle.Setup();
+            }
+
         }
         else if (GameObject.Find("Goal").GetComponent<ObstacleCourseGoal>().HowManyFinishedPlayers() >= characterAmount)
         {
-            nextLevelMenu.Setup();
+            if(levelType == "FULL")
+            {
+                nextLevelMenu.Setup();
+            }
+            else if(levelType == "SINGLE")
+            { 
+
+                levelSingle.Setup();
+            }
+            
         }
     }
 
