@@ -14,6 +14,7 @@ public class statue5 : MonoBehaviour
     public Rigidbody rb;
     private bool moving;
     private bool math;
+    private bool done;
     public GameObject detectorF;
     public GameObject detectorB;
     void Start()
@@ -21,6 +22,7 @@ public class statue5 : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         moving = true;
         math = false;
+        done = false;
         //Variável para escolher aleatóriamente o padrão de rotação
         var randomInt = Random.Range(1,6);
         if(randomInt==1){
@@ -56,6 +58,9 @@ public class statue5 : MonoBehaviour
         {
             if(!math){
                 startDegree+= arrayDegree[currentDegree];
+                if(startDegree>= 360){
+                    startDegree= startDegree-360;
+                }
                 math= true;
                 currentDegree++;
                 if(currentDegree == arrayDegree.Length){
@@ -94,17 +99,19 @@ public class statue5 : MonoBehaviour
 
     private void checkKill(){
         if(detectorF.GetComponent<playerDetector>().EnteredTrigger){
-            if(!moving){
+            if(!moving && !done){
                 Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
-                Debug.Log("Personagem Morreu");
+                Debug.Log("Personagem Morreu pela estátua");
+                done=true;
             }
         }
     }   
     private void checkGem(){
         if(detectorB.GetComponent<playerDetector>().EnteredTrigger){
-            if(!moving){
+            if(!moving && !done){
                 Destroy(detectorB.GetComponent<playerDetector>().CollisionWith);
                 Debug.Log("Personagem Apanhou a Gema");
+                done=true;
             }
         }
     }

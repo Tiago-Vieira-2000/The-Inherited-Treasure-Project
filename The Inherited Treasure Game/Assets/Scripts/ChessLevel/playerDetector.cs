@@ -9,15 +9,18 @@ public class playerDetector : MonoBehaviour
   
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")){
             EnteredTrigger = true;
             CollisionWith = other.gameObject;
             Debug.Log("Jogador Detetado");
+        }
+            
     }
     public void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
-            EnteredTrigger = false;
+        if (other.tag == "Player"){
+             EnteredTrigger = false;
             CollisionWith = null;
+        } 
     }
 }

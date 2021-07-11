@@ -12,6 +12,7 @@ public class statue1 : MonoBehaviour
     public Rigidbody rb;
     private bool moving;
     private bool math;
+    private bool done;
     public GameObject detectorF;
     public GameObject detectorB;
     void Start()
@@ -19,6 +20,7 @@ public class statue1 : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         moving = true;
         math = false;
+        done = false;
     }
 
     // Update is called once per frame
@@ -71,17 +73,19 @@ public class statue1 : MonoBehaviour
 
     private void checkKill(){
         if(detectorF.GetComponent<playerDetector>().EnteredTrigger){
-            if(!moving){
+            if(!moving && !done){
                 Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
                 Debug.Log("Personagem Morreu pela estátua");
+                done=true;
             }
         }
     }   
     private void checkGem(){
         if(detectorB.GetComponent<playerDetector>().EnteredTrigger){
-            if(!moving){
+            if(!moving && !done){
                 Destroy(detectorB.GetComponent<playerDetector>().CollisionWith);
                 Debug.Log("Personagem Apanhou a Gema");
+                done=true;
             }
         }
     }

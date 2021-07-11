@@ -14,6 +14,7 @@ public class statue4 : MonoBehaviour
     public Rigidbody rb;
     private bool moving;
     private bool math;
+    private bool done;
     public GameObject detectorF;
     public GameObject detectorB;
     void Start()
@@ -21,6 +22,7 @@ public class statue4 : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         moving = true;
         math = false;
+        done = false;
         //Variável para escolher aleatóriamente o padrão de rotação
         var randomInt = Random.Range(1,5);
         if(randomInt==1){
@@ -52,6 +54,9 @@ public class statue4 : MonoBehaviour
         {
             if(!math){
                 startDegree+= arrayDegree[currentDegree];
+                if(startDegree>= 360){
+                    startDegree= startDegree-360;
+                }
                 math= true;
                 currentDegree++;
                 if(currentDegree == arrayDegree.Length){
@@ -72,7 +77,7 @@ public class statue4 : MonoBehaviour
             //Debug.Log(rotation);
             //Debug.Log(degree);
             transform.Rotate (0,RotationSpeed * Time.deltaTime,0);
-           if(stop((int)rotation, degree)){
+            if(stop((int)rotation, degree)){
                 transform.Rotate (0,0,0);
                 moving= false;
                 transform.rotation = Quaternion.Euler(0, degree, 0);
@@ -90,17 +95,19 @@ public class statue4 : MonoBehaviour
 
     private void checkKill(){
         if(detectorF.GetComponent<playerDetector>().EnteredTrigger){
-            if(!moving){
+            if(!moving && !done){
                 Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
-                Debug.Log("Personagem Morreu");
+                Debug.Log("Personagem Morreu pela estátua");
+                done=true;
             }
         }
     }   
     private void checkGem(){
         if(detectorB.GetComponent<playerDetector>().EnteredTrigger){
-            if(!moving){
+            if(!moving && !done){
                 Destroy(detectorB.GetComponent<playerDetector>().CollisionWith);
                 Debug.Log("Personagem Apanhou a Gema");
+                done=true;
             }
         }
     }
