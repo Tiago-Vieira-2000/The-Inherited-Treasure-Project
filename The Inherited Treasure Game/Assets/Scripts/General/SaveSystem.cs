@@ -27,13 +27,14 @@ public class SaveSystem : MonoBehaviour
         file.Close();
     }
 
-    public void nextLevelData()
+    public void nextLevelData(double score)
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/Data.dat");
         PlayerData data = new PlayerData();
 
         data.numberPlayers = GameObject.FindGameObjectsWithTag("Player").Length;
+        data.score += score;
 
         bf.Serialize(file, data);
         file.Close();
@@ -154,7 +155,7 @@ class PlayerData
 {
     public int SceneNumber;
     public int numberPlayers;
-    public int score;
+    public double score;
 }
 
 [Serializable]

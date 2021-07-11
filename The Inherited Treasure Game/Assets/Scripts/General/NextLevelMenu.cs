@@ -47,7 +47,10 @@ public class NextLevelMenu : MonoBehaviour
 
     public void NextLevel(string nextLevel)
     {
-        save.nextLevelData();
+        double score = 0;
+        int playersExist = GameObject.FindGameObjectsWithTag("Player").Length;
+        score = 6.25 * playersExist;
+        save.nextLevelData(score);
         SceneManager.LoadScene(nextLevel.ToString());
     }
 

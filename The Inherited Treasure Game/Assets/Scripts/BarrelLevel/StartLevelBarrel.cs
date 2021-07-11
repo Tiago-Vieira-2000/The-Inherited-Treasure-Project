@@ -9,131 +9,39 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class StartLevelBarrel : MonoBehaviour
 {
-    public Rigidbody player1;
     public SaveSystem startGame;
     int nPlayers;
     int diff;
+    int characterAmount;
 
     // Start is called before the first frame update
     void Start()
     {
         startGame = GetComponent<SaveSystem>();
+        characterAmount = startGame.getPlayers();
         nPlayers = startGame.getPlayers();
         diff = startGame.getDifficultyLevel();
-        if(diff == 1)
+        if(diff == 2)
         {
-            for (int i = 0; i < 4; i++)
+            if (GameObject.FindGameObjectsWithTag("Player").Length > nPlayers)
             {
-                if (i == 0)
+                for (int i = 4 - characterAmount; i > 0; i--)
                 {
-                    float x = 7f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
-                }
-                else if (i == 1)
-                {
-                    float x = 3f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
-                }
-                else if (i == 2)
-                {
-                    float x = -1f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
-                }
-                else if (i == 3)
-                {
-                    float x = -5f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
-                }
-            }
-        }
-        else if(diff == 2)
-        {
-            for (int i = 0; i < nPlayers; i++)
-            {
-                if (i == 0)
-                {
-                    float x = 7f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
-                }
-                else if (i == 1)
-                {
-                    float x = 3f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
-                }
-                else if (i == 2)
-                {
-                    float x = -1f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
-                }
-                else if (i == 3)
-                {
-                    float x = -5f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
+                    Destroy(GameObject.Find("Player" + i));
                 }
             }
         }
         else if(diff == 3)
         {
-            for (int i = 0; i < nPlayers; i++)
+            if(GameObject.FindGameObjectsWithTag("Player").Length > nPlayers)
             {
-                if (i == 0)
+                for (int i = 4 - characterAmount; i > 0; i--)
                 {
-                    float x = 7f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
-                }
-                else if (i == 1)
-                {
-                    float x = 3f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
-                }
-                else if (i == 2)
-                {
-                    float x = -1f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
-                }
-                else if (i == 3)
-                {
-                    float x = -5f;
-                    float y = -1f;
-                    float z = -4.75f;
-                    transform.position = new Vector3(x, y, z);
-                    Instantiate(player1, transform.position, transform.rotation);
+                    Destroy(GameObject.Find("Player" + i));
                 }
             }
         }
+        Time.timeScale = 0;
     }
 
  }

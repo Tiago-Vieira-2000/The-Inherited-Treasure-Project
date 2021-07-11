@@ -20,6 +20,7 @@ public class sppedMovement : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
         transform.position += Vector3.back * speed * Time.deltaTime;
+        transform.Rotate(new Vector3(0, 0, speed));
 
         rb.AddForce(movement * speed);
     }

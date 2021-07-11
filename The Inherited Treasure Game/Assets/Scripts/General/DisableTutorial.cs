@@ -19,7 +19,7 @@ public class DisableTutorial : MonoBehaviour
     {
         time += Time.unscaledDeltaTime;        
         int secs = (int)time;
-        if (secs >= 5)
+        if (secs >= 10)
         {
             rawImage.enabled = false;
             Time.timeScale = 1;
