@@ -9,55 +9,39 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class StartLevelBarrel : MonoBehaviour
 {
-    public Rigidbody player1;
     public SaveSystem startGame;
     int nPlayers;
+    int diff;
+    int characterAmount;
 
     // Start is called before the first frame update
     void Start()
     {
         startGame = GetComponent<SaveSystem>();
+        characterAmount = startGame.getPlayers();
         nPlayers = startGame.getPlayers();
-        for(int i = 0; i < nPlayers; i++)
+        diff = startGame.getDifficultyLevel();
+        if(diff == 2)
         {
-            if(i == 0)
+            if (GameObject.FindGameObjectsWithTag("Player").Length > nPlayers)
             {
-                float x = 7f;
-                float y = -1f;
-                float z = -4.75f;
-                transform.position = new Vector3(x, y, z);
-                Instantiate(player1, transform.position, transform.rotation);
-            }
-            else if(i == 1)
-            {
-                float x = 3f;
-                float y = -1f;
-                float z = -4.75f;
-                transform.position = new Vector3(x, y, z);
-                Instantiate(player1, transform.position, transform.rotation);
-            }
-            else if (i == 2)
-            {
-                float x = -1f;
-                float y = -1f;
-                float z = -4.75f;
-                transform.position = new Vector3(x, y, z);
-                Instantiate(player1, transform.position, transform.rotation);
-            }
-            else if (i == 3)
-            {
-                float x = -5f;
-                float y = -1f;
-                float z = -4.75f;
-                transform.position = new Vector3(x, y, z);
-                Instantiate(player1, transform.position, transform.rotation);
+                for (int i = 4 - characterAmount; i > 0; i--)
+                {
+                    Destroy(GameObject.Find("Player" + i));
+                }
             }
         }
+        else if(diff == 3)
+        {
+            if(GameObject.FindGameObjectsWithTag("Player").Length > nPlayers)
+            {
+                for (int i = 4 - characterAmount; i > 0; i--)
+                {
+                    Destroy(GameObject.Find("Player" + i));
+                }
+            }
+        }
+        Time.timeScale = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+ }

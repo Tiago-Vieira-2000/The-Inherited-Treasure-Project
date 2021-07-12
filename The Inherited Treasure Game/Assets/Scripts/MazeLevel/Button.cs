@@ -8,6 +8,7 @@ public class Button : MonoBehaviour
     private float MovementSpeed;
     private float position;
     private bool moving;
+    private bool onePlayer;
 
     /// <summary>
     /// Method that starts the Button unpressed and still.
@@ -25,11 +26,13 @@ public class Button : MonoBehaviour
     /// </summary>
     void Update()
     {
+        onePlayer = GameObject.Find("Floor").GetComponent<MazeGame>().onePlayer();
         if (moving) {
             if (!isActive) {
                 press(); 
             }
-            else {
+            else if (!onePlayer)
+            {
                 unpress(); 
             }
         }
@@ -41,7 +44,7 @@ public class Button : MonoBehaviour
     /// <param name="other">Object that touches the Button</param>
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Box") || other.CompareTag("Character"))
+        if (other.CompareTag("Player"))
         {
             if (!isActive)
             {
@@ -56,7 +59,7 @@ public class Button : MonoBehaviour
     /// <param name="other">Object that stoped touching the Button</param>
     private void OnTriggerExit(Collider other)
     {
-        if (isActive)
+        if (isActive && !onePlayer)
         {
             moving = true;
         }

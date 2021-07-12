@@ -9,17 +9,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class MainMenu : MonoBehaviour
 {
-   public SaveSystem load;
+    public SaveSystem load;
     public void Start()
     {
         load = GetComponent<SaveSystem>();
     }
 
-    public void startGame()
-    {
-        load.restartData();
-        SceneManager.LoadScene("BarrelLevel");
-    }
 
 
     public void loadGame()
