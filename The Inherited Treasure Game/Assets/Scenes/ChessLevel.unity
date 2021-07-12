@@ -7435,6 +7435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 877333313}
+  hasGem: 0
   detectorF: {fileID: 941592279}
   detectorB: {fileID: 796225710}
 --- !u!1 &881225262
@@ -7688,6 +7689,7 @@ GameObject:
   - component: {fileID: 893475942}
   - component: {fileID: 893475941}
   - component: {fileID: 893475940}
+  - component: {fileID: 893475944}
   m_Layer: 0
   m_Name: player1
   m_TagString: Player
@@ -7772,6 +7774,19 @@ Transform:
   m_Father: {fileID: 362996442}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &893475944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893475939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aace3c0348df114181c3651fcec0739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasGem: 0
 --- !u!1 &893542744
 GameObject:
   m_ObjectHideFlags: 0
@@ -12332,6 +12347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1399647637}
+  hasGem: 0
   detectorF: {fileID: 1075058293}
   detectorB: {fileID: 1224862884}
 --- !u!1 &1400407221
@@ -12473,6 +12489,7 @@ GameObject:
   - component: {fileID: 1437664046}
   - component: {fileID: 1437664045}
   - component: {fileID: 1437664044}
+  - component: {fileID: 1437664047}
   m_Layer: 0
   m_Name: player2
   m_TagString: Player
@@ -12557,6 +12574,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437664042}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1437664047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437664042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aace3c0348df114181c3651fcec0739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasGem: 0
 --- !u!1 &1442842552
 GameObject:
   m_ObjectHideFlags: 0
@@ -13586,6 +13616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1505737671}
+  hasGem: 0
   detectorF: {fileID: 336802877}
   detectorB: {fileID: 1287455938}
 --- !u!1 &1512509466
@@ -15072,6 +15103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1704372139}
+  hasGem: 0
   detectorF: {fileID: 525366454}
   detectorB: {fileID: 421323210}
 --- !u!1 &1717302765
@@ -16842,6 +16874,7 @@ GameObject:
   - component: {fileID: 1861283795}
   - component: {fileID: 1861283794}
   - component: {fileID: 1861283793}
+  - component: {fileID: 1861283796}
   m_Layer: 0
   m_Name: player4
   m_TagString: Player
@@ -16926,6 +16959,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861283791}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1861283796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861283791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aace3c0348df114181c3651fcec0739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasGem: 0
 --- !u!1 &1862883690
 GameObject:
   m_ObjectHideFlags: 0
@@ -18158,6 +18204,7 @@ GameObject:
   - component: {fileID: 2007029897}
   - component: {fileID: 2007029896}
   - component: {fileID: 2007029895}
+  - component: {fileID: 2007029898}
   m_Layer: 0
   m_Name: player3
   m_TagString: Player
@@ -18242,6 +18289,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007029893}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2007029898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007029893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aace3c0348df114181c3651fcec0739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasGem: 0
 --- !u!1 &2010541251
 GameObject:
   m_ObjectHideFlags: 0
@@ -18689,6 +18749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2103023972}
+  hasGem: 0
   detectorF: {fileID: 1015911130}
   detectorB: {fileID: 87459012}
 --- !u!1 &2105708769

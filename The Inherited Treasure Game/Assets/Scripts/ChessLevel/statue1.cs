@@ -13,6 +13,7 @@ public class statue1 : MonoBehaviour
     private bool moving;
     private bool math;
     private bool done;
+    public bool hasGem;
     public GameObject detectorF;
     public GameObject detectorB;
     void Start()
@@ -21,6 +22,7 @@ public class statue1 : MonoBehaviour
         moving = true;
         math = false;
         done = false;
+        hasGem= true;
     }
 
     // Update is called once per frame
@@ -82,12 +84,19 @@ public class statue1 : MonoBehaviour
     }   
     private void checkGem(){
         if(detectorB.GetComponent<playerDetector>().EnteredTrigger){
-            if(!moving && !done){
-                Destroy(detectorB.GetComponent<playerDetector>().CollisionWith);
-                Debug.Log("Personagem Apanhou a Gema");
+            if(!moving && !done && hasGem){
+                GameObject playerDetected = detectorB.GetComponent<playerDetector>().CollisionWith;
+                if(playerDetected.GetComponent<player>().hasGem){
+                    Debug.Log("Esta Personagem já tem uma gema");
+                }
+                else
+                {
+                    Debug.Log("Personagem Apanhou a Gema");
+                    playerDetected.GetComponent<player>().hasGem = true;
+                    hasGem=false;
+                }
                 done=true;
             }
         }
     }
-    
 }
