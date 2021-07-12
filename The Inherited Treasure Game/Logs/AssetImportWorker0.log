@@ -172,3 +172,24 @@ Received Import Request.
 Start importing Assets/Scripts/BarrelLevel/TurnLightsRedBarrellevel.cs using Guid(fc0845e05f633af4e8134b8245c23eb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c1bf192035525020e600cd23c2f1b7e') in 0.007697 seconds
   Import took 0.010979 seconds .
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001273 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.37 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.166 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1140 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 59.4 MB.
+System memory in use after: 59.5 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1616.
+Total: 2.911900 ms (FindLiveObjects: 0.214800 ms CreateObjectMapping: 0.047300 ms MarkObjects: 2.622500 ms  DeleteObjects: 0.025200 ms)
+
