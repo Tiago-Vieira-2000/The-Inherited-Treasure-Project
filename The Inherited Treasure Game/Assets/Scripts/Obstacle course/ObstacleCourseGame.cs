@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleCourseGame : MonoBehaviour
 {
     public int characterAmount;
+    private int score = 0;
     public SaveSystem startGame;
     public NextLevelMenu nextLevelMenu;
     public LevelCompletedMenu levelSingle;
@@ -17,10 +18,12 @@ public class ObstacleCourseGame : MonoBehaviour
         //startGame.restartData();
         characterAmount = startGame.getPlayers();
         //characterAmount = 1;
-        DestroyUnnecessaryObjects();
+        KillCharacters();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// All Game logic
+    /// </summary>
     void Update()
     {
         string levelType = startGame.getGameType();
@@ -38,6 +41,7 @@ public class ObstacleCourseGame : MonoBehaviour
         }
         else if (GameObject.Find("Goal").GetComponent<ObstacleCourseGoal>().HowManyFinishedPlayers() >= characterAmount)
         {
+            score = characterAmount*(4/25);
             if(levelType == "FULL")
             {
                 nextLevelMenu.Setup();
@@ -51,7 +55,10 @@ public class ObstacleCourseGame : MonoBehaviour
         }
     }
 
-    void DestroyUnnecessaryObjects()
+    /// <summary>
+    /// Destroy characters depending on the saved characterAmount and updates the lights
+    /// </summary>
+    void KillCharacters()
     {
         for (int i = 4 - characterAmount; i > 0; i--)
         {
@@ -60,11 +67,19 @@ public class ObstacleCourseGame : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates lights and characterAmount
+    /// </summary>
+    /// <param name="name">Name of the character that died</param>
     public void characterDied(string name) {
         turnLightsRed(name);
         characterAmount--;
     }
 
+    /// <summary>
+    /// Turn a Light row red
+    /// </summary>
+    /// <param name="name">Name of the character that died</param>
     void turnLightsRed(string name) {
         Light[] lights;
         lights = FindObjectsOfType(typeof(Light)) as Light[];
