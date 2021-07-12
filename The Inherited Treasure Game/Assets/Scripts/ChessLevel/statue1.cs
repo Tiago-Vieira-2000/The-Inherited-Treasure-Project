@@ -7,7 +7,7 @@ public class statue1 : MonoBehaviour
     // Start is called before the first frame update
     private float time = 5;
     private float RotationSpeed = 50.0f;
-    private int startDegree = 180;
+    private int startDegree = 270;
     //private int endDegree =0;
     public Rigidbody rb;
     private bool moving;

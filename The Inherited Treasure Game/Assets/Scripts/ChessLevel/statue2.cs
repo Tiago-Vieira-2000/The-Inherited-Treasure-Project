@@ -9,7 +9,7 @@ public class statue2 : MonoBehaviour
     private float RotationSpeed = 50.0f;
     private int[] arrayDegree;
     private int currentDegree;
-    private int startDegree = 180;
+    private int startDegree = 270;
     //private int endDegree =0;
     public Rigidbody rb;
     private bool moving;
