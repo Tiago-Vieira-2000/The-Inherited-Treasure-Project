@@ -7,12 +7,17 @@ public class sppedMovement : MonoBehaviour
     public float speed = 5f;
     private Rigidbody rb;
 
+    /// <summary>
+    /// Receives Rigidbody object
+    /// </summary>
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Adds movement to object with this script
+    /// </summary>
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");

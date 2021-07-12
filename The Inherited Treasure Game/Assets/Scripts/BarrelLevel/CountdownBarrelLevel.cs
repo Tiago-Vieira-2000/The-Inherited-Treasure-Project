@@ -15,6 +15,10 @@ public class CountdownBarrelLevel : MonoBehaviour
     public LevelCompletedMenu menu2;
     public SaveSystem saveSystem;
 
+    /// <summary>
+    /// Receives Save System script
+    /// And sets up text labels
+    /// </summary>
     void Start()
     {
         Time.timeScale = 1;
@@ -22,6 +26,9 @@ public class CountdownBarrelLevel : MonoBehaviour
         saveSystem = GetComponent<SaveSystem>();
     }
 
+    /// <summary>
+    /// Everey frame time, counts down until it reaches 0, then shows Next Level Menu
+    /// </summary>
     private void Update()
     {
         if (time > 0)

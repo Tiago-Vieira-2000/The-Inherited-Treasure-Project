@@ -11,6 +11,9 @@ public class SaveSystem : MonoBehaviour
 
     int sceneNumber;
 
+    /// <summary>
+    /// Save Game Data
+    /// </summary>
     public void SaveData()
     {
         sceneNumber = SceneManager.GetActiveScene().buildIndex;
@@ -27,6 +30,10 @@ public class SaveSystem : MonoBehaviour
         file.Close();
     }
 
+    /// <summary>
+    /// Saves data to next Level
+    /// </summary>
+    /// <param name="score"></param>
     public void nextLevelData(double score)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -40,6 +47,10 @@ public class SaveSystem : MonoBehaviour
         file.Close();
     }
 
+    /// <summary>
+    /// Returns Number of players
+    /// </summary>
+    /// <returns></returns>
     public int getPlayers()
     {
         
@@ -52,6 +63,10 @@ public class SaveSystem : MonoBehaviour
         return data.numberPlayers;
     }
 
+    /// <summary>
+    /// Return number of Scene
+    /// </summary>
+    /// <returns></returns>
     public int getSceneNumber()
     {
 
@@ -64,6 +79,10 @@ public class SaveSystem : MonoBehaviour
         return data.SceneNumber;
     }
 
+    /// <summary>
+    /// Return difficulty level
+    /// </summary>
+    /// <returns></returns>
     public int getDifficultyLevel()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -75,6 +94,11 @@ public class SaveSystem : MonoBehaviour
         return data.getDiff();
     }
 
+    /// <summary>
+    /// Sets up difficulty and type of game
+    /// </summary>
+    /// <param name="difficulty"></param>
+    /// <param name="type"></param>
     public void setGameData(int difficulty, string type)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -90,6 +114,10 @@ public class SaveSystem : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Return game type
+    /// </summary>
+    /// <returns></returns>
     public string getGameType()
     {
         if (File.Exists(Application.persistentDataPath + "/GameData.dat"))
@@ -109,7 +137,9 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
- 
+    /// <summary>
+    /// Restarts game data
+    /// </summary>    
     public void restartData()
     {
         sceneNumber = SceneManager.GetActiveScene().buildIndex;
@@ -127,6 +157,9 @@ public class SaveSystem : MonoBehaviour
         file.Close();
     }
 
+    /// <summary>
+    /// Loads saved game data
+    /// </summary>
     public void LoadData()
     {
         if (File.Exists(Application.persistentDataPath + "/Data.dat"))
