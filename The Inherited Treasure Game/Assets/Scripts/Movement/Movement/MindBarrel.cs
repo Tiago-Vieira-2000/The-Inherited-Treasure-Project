@@ -20,6 +20,21 @@ public class MindBarrel : MonoBehaviour
         currentPlayer = Players[0];
     }
 
+    private void Update()
+    {
+        if(currentPlayer == null)
+        {
+            currentPlayer = Players[0];
+        }
+
+        for (int i = 1; i < Players.Count; i++)
+        {
+            if (Players[i] == null)
+            {
+                Players.Remove(Players[i]);
+            }
+        }
+    }
     public void changePlayer(GameObject player)
     {
         currentPlayer.GetComponent<JumpingScript>().enabled = false;
