@@ -30,6 +30,17 @@ public class SaveSystem : MonoBehaviour
         file.Close();
     }
 
+    public double GetScore()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(Application.persistentDataPath + "/Data.dat", FileMode.Open);
+        PlayerData data = (PlayerData)bf.Deserialize(file);
+
+        file.Close();
+
+        return data.score;
+    }
+
     /// <summary>
     /// Saves data to next Level
     /// </summary>
@@ -162,8 +173,10 @@ public class SaveSystem : MonoBehaviour
     /// </summary>
     public void LoadData()
     {
+        Debug.Log("Here");
         if (File.Exists(Application.persistentDataPath + "/Data.dat"))
         {
+           
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/Data.dat", FileMode.Open);
             PlayerData data = (PlayerData)bf.Deserialize(file);
@@ -173,11 +186,12 @@ public class SaveSystem : MonoBehaviour
             PlayerPrefs.DeleteAll();
 
             int newScene = data.SceneNumber + 1;
+            Debug.Log(data.SceneNumber);
             SceneManager.LoadScene(newScene);
              }
         else
         {
-            Debug.Log("File does not exist");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

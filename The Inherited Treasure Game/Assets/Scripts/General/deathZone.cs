@@ -33,7 +33,6 @@ public class deathZone : MonoBehaviour
         else
         {
             Destroy(other.gameObject);
-            Debug.Log("Object destroyed");
         }
 
     }

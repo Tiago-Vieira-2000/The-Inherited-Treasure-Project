@@ -10,7 +10,6 @@ public class TurnLightsRedBarrellevel : MonoBehaviour
     /// <param name="name"></param>
     public void characterDied(string name)
     {
-        Debug.Log("Enter");
         turnLightsRed(name);
     }
 
