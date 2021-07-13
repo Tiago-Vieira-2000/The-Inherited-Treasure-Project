@@ -34,7 +34,7 @@ public class statue1 : MonoBehaviour
         {
             time -= Time.deltaTime;
             //Debug.Log(Mathf.Round(time).ToString());
-            transform.Rotate (0,RotationSpeed * Time.deltaTime,0); //roda 50 graus por segundo no eixo do y
+            transform.Rotate (0,0,RotationSpeed * Time.deltaTime); //roda 50 graus por segundo no eixo do y
         }
         else
         {
@@ -57,12 +57,12 @@ public class statue1 : MonoBehaviour
         if(moving){
             //Debug.Log(rotation);
             //Debug.Log(degree);
-            transform.Rotate (0,RotationSpeed * Time.deltaTime,0);
+            transform.Rotate (0,0,RotationSpeed * Time.deltaTime);
             if(stop((int)rotation, degree)){
-                 transform.Rotate (0,0,0);
-                 moving= false;
-                 transform.rotation = Quaternion.Euler(0, degree, 0);
-                 Debug.Log("Parou");
+                transform.Rotate (0,0,0);
+                moving= false;
+                transform.rotation = Quaternion.Euler(-90, 0, degree);
+                Debug.Log("Parou");
             }
         }
     }
