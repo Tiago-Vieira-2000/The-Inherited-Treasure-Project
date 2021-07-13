@@ -18,6 +18,7 @@ public class statue4 : MonoBehaviour
     public bool hasGem;
     public GameObject detectorF;
     public GameObject detectorB;
+    public GameObject Gem;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -115,6 +116,8 @@ public class statue4 : MonoBehaviour
                 {
                     Debug.Log("Personagem Apanhou a Gema");
                     playerDetected.GetComponent<player>().hasGem = true;
+                    playerDetected.GetComponent<player>().Gem.SetActive(true);
+                    Gem.SetActive(false);
                     hasGem=false;
                 }
                 done=true;

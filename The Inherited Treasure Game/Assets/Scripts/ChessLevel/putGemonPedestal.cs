@@ -6,9 +6,11 @@ public class putGemonPedestal : MonoBehaviour
 {
     public GameObject detectorP;
     private bool hasGem;
+    public GameObject Gem;
     // Start is called before the first frame update
     void Start()
     {
+        Gem.SetActive(false);
         hasGem = false;
     }
 
@@ -21,6 +23,8 @@ public class putGemonPedestal : MonoBehaviour
                 if(playerDetected.GetComponent<player>().hasGem){
                     Debug.Log("Pedestal recebeu a Gema");
                     playerDetected.GetComponent<player>().rb.isKinematic = true;
+                    playerDetected.GetComponent<player>().Gem.SetActive(false);
+                    Gem.SetActive(true);
                     hasGem = true;
                 }
             }

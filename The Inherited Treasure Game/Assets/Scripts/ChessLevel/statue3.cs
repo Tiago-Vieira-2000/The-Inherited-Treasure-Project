@@ -18,6 +18,7 @@ public class statue3 : MonoBehaviour
     public bool hasGem;
     public GameObject detectorF;
     public GameObject detectorB;
+    public GameObject Gem;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -101,7 +102,7 @@ public class statue3 : MonoBehaviour
             }
         }
     }   
-    private void checkGem(){
+   private void checkGem(){
         if(detectorB.GetComponent<playerDetector>().EnteredTrigger){
             if(!moving && !done && hasGem){
                 GameObject playerDetected = detectorB.GetComponent<playerDetector>().CollisionWith;
@@ -112,6 +113,8 @@ public class statue3 : MonoBehaviour
                 {
                     Debug.Log("Personagem Apanhou a Gema");
                     playerDetected.GetComponent<player>().hasGem = true;
+                    playerDetected.GetComponent<player>().Gem.SetActive(true);
+                    Gem.SetActive(false);
                     hasGem=false;
                 }
                 done=true;
