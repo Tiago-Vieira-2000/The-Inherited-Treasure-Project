@@ -10,13 +10,15 @@ public class deathZone : MonoBehaviour
     public GameOver gameOverMenu;
     public LevelCompletedMenu gameOverSingle;
     public SaveSystem saveSystem;
+    //public MindBarrel mindBarrels;
 
     /// <summary>
     /// Receives SaveSystem script
     /// </summary>
     private void Start()
     {
-        saveSystem = GetComponent<SaveSystem>();    
+        saveSystem = GetComponent<SaveSystem>();
+        //mindBarrels = GetComponent<MindBarrel>();
     }
 
     /// <summary>
@@ -27,6 +29,8 @@ public class deathZone : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            GameObject remove = other.gameObject;
+            //mindBarrels.removePlayer(remove);
             GameObject.Find("Players").GetComponent<TurnLightsRedBarrellevel>().characterDied(other.gameObject.name);
             Destroy(other.gameObject);
         }

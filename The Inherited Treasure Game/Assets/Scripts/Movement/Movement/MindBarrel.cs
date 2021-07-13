@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MindBarrel : MonoBehaviour
 {
-    public GameObject[] Players;
+    public List<GameObject> Players;
     [SerializeField]
 
     GameObject currentPlayer;
 
     void Start()
     {
-        for (int i = 1; i < Players.Length; i++)
+        for (int i = 1; i < Players.Count; i++)
         {
             Players[i].GetComponent<JumpingScript>().enabled = false;
         }
@@ -28,11 +29,14 @@ public class MindBarrel : MonoBehaviour
         stopPlayers(currentPlayer);
 
     }
-
+    public void removePlayer(GameObject player)
+    {
+        Players.Remove(player);
+    }
     public void stopPlayers(GameObject player)
     {
         {
-            for (int i = 1; i < Players.Length; i++)
+            for (int i = 1; i < Players.Count; i++)
             {
                 if (!Players[i] == player)
                     Players[i].GetComponent<JumpingScript>().enabled = false;

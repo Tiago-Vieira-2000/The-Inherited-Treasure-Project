@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine; 
+using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.SceneManagement;
+using System.IO;
+
+[RequireComponent(typeof(SaveSystem))]
+
 
 public class GameOver : MonoBehaviour
 {
@@ -37,9 +42,17 @@ public class GameOver : MonoBehaviour
     /// <summary>
     /// Loads last save
     /// </summary>
-    public void loadLastSave()
+    public void loadGame()
     {
         Time.timeScale = 1;
-        loadSave.LoadData();
+        if (!File.Exists(Application.persistentDataPath + "/Data.dat"))
+        {
+            loadSave.LoadData();
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        
     }
 }

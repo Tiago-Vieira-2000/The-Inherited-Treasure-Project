@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0039957035, g: 0.00021792634, b: 0.000000051515347, a: 1}
+  m_IndirectSpecularColor: {r: 0.003995703, g: 0.00021792634, b: 0.000000051515347, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -128,6 +128,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5808845030960865522, guid: 8df96468330ee9842b966c7f657e86d3, type: 3}
   m_PrefabInstance: {fileID: 5808845029779434009}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1365801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1065585314416618029, guid: 8df96468330ee9842b966c7f657e86d3, type: 3}
+  m_PrefabInstance: {fileID: 5808845029779434009}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9513f01be13da54a91d40e8107b114a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &1365804
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1653,7 +1664,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 922633699}
-  - component: {fileID: 922633700}
   - component: {fileID: 922633701}
   m_Layer: 0
   m_Name: Spawner1
@@ -1676,18 +1686,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &922633700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922633698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe10f90138faec64c8462219159dd682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &922633701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,9 +1715,9 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   - component: {fileID: 963194231}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1801,9 +1799,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98e9b9c972cdc8b40bddaad6adc0e9ab, type: 3}
+  m_Script: {fileID: 11500000, guid: af9b7822cf76a114daedfcca5d908d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeLeft: {fileID: 1465451782}
+  time: 30
+  nextLevel: ChessLevel
+  menu: {fileID: 1365801}
+  menu2: {fileID: 969308352}
+  saveSystem: {fileID: 963194231}
 --- !u!82 &963194230
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1917,6 +1921,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5460288066295742482, guid: 3d1259aeb691bfe448226e402302d549, type: 3}
   m_PrefabInstance: {fileID: 4144008681632372406}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &969308352 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4144008681308954092, guid: 3d1259aeb691bfe448226e402302d549, type: 3}
+  m_PrefabInstance: {fileID: 4144008681632372406}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969308351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 328d81ce4f872074fb6777daa058f7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &969308354
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3922,11 +3937,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Players:
-  - {fileID: 1532961352}
   - {fileID: 1140988460}
   - {fileID: 865840880}
   - {fileID: 563825245}
-  currentPlayer: {fileID: 0}
+  - {fileID: 1532961352}
+  currentPlayer: {fileID: 1532961352}
 --- !u!1 &1822467386
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,7 +4976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8233898303478853918, guid: e7c089ff585d39940bd105599d65ea12, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: loadLastSave
+      value: loadGame
       objectReference: {fileID: 0}
     - target: {fileID: 8233898303478853918, guid: e7c089ff585d39940bd105599d65ea12, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
