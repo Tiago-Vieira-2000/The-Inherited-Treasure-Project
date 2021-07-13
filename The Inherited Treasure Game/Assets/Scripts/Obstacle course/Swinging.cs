@@ -13,6 +13,9 @@ public class Swinging : MonoBehaviour
         originalPosition = transform.position;
     }
 
+    /// <summary>
+    /// The Swinging platform is the platform that moves from left to right
+    /// </summary>
     void Update()
     {
         Vector3 a = originalPosition;

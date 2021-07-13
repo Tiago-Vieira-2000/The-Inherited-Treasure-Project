@@ -10,6 +10,8 @@ public class MazeGame : MonoBehaviour
     private List<string> colours;
     private float time = 0;
     private bool finished = false;
+    private int maxTime = 600;
+    private int score = 0;
     public SaveSystem startGame;
     public NextLevelMenu nextLevelMenu;
     public GameOver gameOverMenu;
@@ -17,7 +19,7 @@ public class MazeGame : MonoBehaviour
     public LevelCompletedMenu levelSingle;
 
     /// <summary>
-    /// Method that starts the Game, destroys any unwanted object depending on characterAmount
+    /// Method that starts the Game, destroys any unwanted object depending on characterAmount including characters
     /// colours         -> colours available in the game (boxes, buttons, doors)
     /// characterAmount -> amount of characters that are still alive
     /// </summary>
@@ -37,7 +39,7 @@ public class MazeGame : MonoBehaviour
     }
 
     /// <summary>
-    /// Method responsable for contantly checking if any element of the game needs to be updated.
+    /// Method responsable for all game logic
     /// </summary>
     void Update()
     {
@@ -47,7 +49,7 @@ public class MazeGame : MonoBehaviour
             checkAllDoors();
             updateTimer();
             if (GameObject.Find("Goal").GetComponent<MazeGoal>().HowManyFinishedPlayers()>=characterAmount
-                || time > 600) {
+                || time > maxTime) {
                 setFinished();
             }
             if ((int)time % 75 == 0)
@@ -56,15 +58,15 @@ public class MazeGame : MonoBehaviour
             }
         }
         else {
-            int characterLimit = 4;
-            
-            if (time > 600) {
+            //How many characters can pass to the next level
+            int characterLimit = 4;            
+            if (time > maxTime){
                 characterLimit = 0;
-            }else if (time > 500){
+            }else if (time > maxTime * 0.83){
                 characterLimit = 1;
-            }else if (time > 400){
+            }else if (time > maxTime * 0.66){
                 characterLimit = 2;
-            }else if (time > 300){
+            } else if (time > maxTime * 0.5){
                 characterLimit = 3;
             }
 
@@ -73,6 +75,11 @@ public class MazeGame : MonoBehaviour
                 characterAmount--;
                 KillCharacters();
             }
+
+            //decide the score
+            //TODO: save do score
+            double x = 25 / (4/(maxTime*0.30));
+            score = (int)(characterAmount / time * x);
 
             if (characterLimit>0) {
                 if(levelType == "SINGLE")
@@ -98,6 +105,9 @@ public class MazeGame : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// turns light rows as the game progresses
+    /// <summary>
     void turnLightsRed()
     {
         int rows = 0;
@@ -164,6 +174,9 @@ public class MazeGame : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method responsable for destroying characters
+    /// </summary>
     void KillCharacters()
     {
         for (int i = 4 - characterAmount; i > 0; i--)
@@ -247,6 +260,7 @@ public class MazeGame : MonoBehaviour
     void setFinished() {
         finished = !finished;
     }
+
     public bool onePlayer()
     {
         if (characterAmount == 1)

@@ -14,7 +14,9 @@ public class StartLevelBarrel : MonoBehaviour
     int diff;
     int characterAmount;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Adds players to level, depending on how many player are in the game data
+    /// </summary>
     void Start()
     {
         startGame = GetComponent<SaveSystem>();

@@ -14,7 +14,9 @@ public class SpawnBarrel : MonoBehaviour
     public float z = 0;
 
  
-    // Update is called once per frame
+    /// <summary>
+    /// Every time a barrel is spawned, a random location will be selected and the barrel will spawn from that new location
+    /// </summary>
     void Update()
     {
         float randomTime = Random.Range(minTime, maxTime);

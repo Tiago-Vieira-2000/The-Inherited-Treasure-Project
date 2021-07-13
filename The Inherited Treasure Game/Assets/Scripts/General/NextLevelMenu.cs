@@ -12,11 +12,17 @@ public class NextLevelMenu : MonoBehaviour
     public GameObject buttonSaveQuit;
     public GameObject buttonQuit;
 
+    /// <summary>
+    /// Receives Save System Script
+    /// </summary>
     public void Start()
     {
         save = GetComponent<SaveSystem>();    
     }
 
+    /// <summary>
+    /// Sets up Next Level Menu
+    /// </summary>
     public void Setup()
     {
         int diff = save.getDifficultyLevel();
@@ -45,6 +51,10 @@ public class NextLevelMenu : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Goes to selected Scene
+    /// </summary>
+    /// <param name="nextLevel"></param>
     public void NextLevel(string nextLevel)
     {
         double score = 0;
@@ -54,11 +64,17 @@ public class NextLevelMenu : MonoBehaviour
         SceneManager.LoadScene(nextLevel.ToString());
     }
 
+    /// <summary>
+    /// Goes to Main Menu Scene
+    /// </summary>
     public void Quit()
     {
         SceneManager.LoadScene("MainMenu");
     }
 
+    /// <summary>
+    /// Saves Game and return to Main Menu Scene
+    /// </summary>
     public void saveQuit()
     {
         int diff = save.getDifficultyLevel();

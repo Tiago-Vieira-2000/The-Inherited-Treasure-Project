@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class TurnLightsRedBarrellevel : MonoBehaviour
 {
+    /// <summary>
+    /// When a character dies, the pathway where the player was turns red
+    /// </summary>
+    /// <param name="name"></param>
     public void characterDied(string name)
     {
         Debug.Log("Enter");
         turnLightsRed(name);
     }
 
+    /// <summary>
+    /// Turns pathway lights red
+    /// </summary>
+    /// <param name="name"></param>
     void turnLightsRed(string name)
     {
         

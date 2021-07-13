@@ -13,6 +13,9 @@ public class Lift : MonoBehaviour
         originalPosition = transform.position;
     }
 
+    /// <summary>
+    /// The Lift platform moves up and down
+    /// </summary>
     void Update()
     {
         Vector3 a = originalPosition;

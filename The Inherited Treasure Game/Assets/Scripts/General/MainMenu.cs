@@ -10,18 +10,26 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class MainMenu : MonoBehaviour
 {
     public SaveSystem load;
+    /// <summary>
+    /// Receives Save System Script
+    /// </summary>
     public void Start()
     {
         load = GetComponent<SaveSystem>();
     }
 
 
-
+    /// <summary>
+    /// Loads saved game
+    /// </summary>
     public void loadGame()
     {
         load.LoadData();
     }
 
+    /// <summary>
+    /// Leaves Game
+    /// </summary>
     public void quitGame()
     {
         Debug.Log("Quit");
