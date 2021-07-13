@@ -132,7 +132,7 @@ public class SaveSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log("File does not exist");
+            //Debug.Log("File does not exist");
             return "";
         }
     }
