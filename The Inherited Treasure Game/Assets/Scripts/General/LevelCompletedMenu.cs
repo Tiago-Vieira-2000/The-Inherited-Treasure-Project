@@ -10,6 +10,7 @@ public class LevelCompletedMenu : MonoBehaviour
     /// </summary>
     public void Setup()
     {
+        Time.timeScale = 0;
         gameObject.SetActive(true);
     }
 
@@ -18,6 +19,7 @@ public class LevelCompletedMenu : MonoBehaviour
     /// </summary>
     public void Restart()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -26,6 +28,7 @@ public class LevelCompletedMenu : MonoBehaviour
     /// </summary>
     public void Leave()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -5,16 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public SaveSystem loadSave;
+    public SaveSystem gameOver;
     public GameObject saveButton;
+
+    private void Start()
+    {
+       gameOver = GetComponent<SaveSystem>();  
+    }
 
     /// <summary>
     /// Sets up game over menu
     /// </summary>
     public void Setup()
     {
-        int diff = loadSave.getDifficultyLevel();
-        loadSave = GetComponent<SaveSystem>();
+        int diff = gameOver.getDifficultyLevel();
         gameObject.SetActive(true);
         Time.timeScale = 0;
         if(diff == 3)
@@ -39,7 +43,16 @@ public class GameOver : MonoBehaviour
     /// </summary>
     public void loadLastSave()
     {
-        Time.timeScale = 1;
-        loadSave.LoadData();
+        gameOver = GetComponent<SaveSystem>();
+        if(gameOver == null)
+        {
+            Debug.Log("BOOOOOOOOOOOOO");
+        }
+        else
+        {
+            gameOver.LoadData();
+            Time.timeScale = 1;
+        }
+       
     }
 }

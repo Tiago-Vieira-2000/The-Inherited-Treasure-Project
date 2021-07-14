@@ -7,6 +7,10 @@ public class playerDetector : MonoBehaviour
     public bool EnteredTrigger;
     public GameObject CollisionWith;  
   
+    /// <summary>
+    /// Detects if a character has entered your area
+    /// </summary>
+    /// <param other="other"></param>
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")){
@@ -16,6 +20,10 @@ public class playerDetector : MonoBehaviour
         }
             
     }
+    /// <summary>
+    /// Detects if a character leaves your area
+    /// </summary>
+    /// <param other="other"></param>
     public void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player"){

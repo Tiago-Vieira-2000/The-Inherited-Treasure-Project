@@ -32,22 +32,18 @@ public class SpawnBarrel : MonoBehaviour
             barrel.transform.position = this.gameObject.transform.position;
             if(randomSpawn == 1)
             {
-                Debug.Log("Enter: ");
                 this.gameObject.transform.position = pos1;
             }
             else if(randomSpawn == 2)
             {
-                Debug.Log("Enter: ");
                 this.gameObject.transform.position = pos2;
             }
             else if (randomSpawn == 3)
             {
-                Debug.Log("Enter: ");
                 this.gameObject.transform.position = pos3;
             }
             else if (randomSpawn == 4)
             {
-                Debug.Log("Enter: ");
                 this.gameObject.transform.position = pos4;
             }
 

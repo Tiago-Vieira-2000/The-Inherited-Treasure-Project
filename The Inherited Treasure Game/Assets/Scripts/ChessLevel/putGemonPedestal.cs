@@ -6,13 +6,21 @@ public class putGemonPedestal : MonoBehaviour
 {
     public GameObject detectorP;
     private bool hasGem;
+    public GameObject Gem;
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialize the variables
+    /// </summary>
     void Start()
     {
+        Gem.SetActive(false);
         hasGem = false;
     }
 
     // Update is called once per frame
+    /// <summary>
+    /// When a character stands in front of the pedestal, put the gem inside, and prevent that character from moving any further.
+    /// </summary>
     void Update()
     {
         if(detectorP.GetComponent<playerDetector>().EnteredTrigger){
@@ -21,6 +29,8 @@ public class putGemonPedestal : MonoBehaviour
                 if(playerDetected.GetComponent<player>().hasGem){
                     Debug.Log("Pedestal recebeu a Gema");
                     playerDetected.GetComponent<player>().rb.isKinematic = true;
+                    playerDetected.GetComponent<player>().Gem.SetActive(false);
+                    Gem.SetActive(true);
                     hasGem = true;
                 }
             }

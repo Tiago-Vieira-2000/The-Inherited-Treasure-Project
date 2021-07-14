@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public MindScript mind;
+    GameObject obj;
     int layer_mask;
 
     private void Start()
@@ -22,9 +23,11 @@ public class PlayerScript : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
             {
-                if (hit.transform != null)
+                if (hit.transform.gameObject.tag == "Player")
                 {
-                    mind.changePlayer(hit.transform.gameObject);
+                    obj = hit.transform.gameObject;
+                    Debug.Log("Tag " + obj.tag);
+                    mind.changePlayer(obj);
                     Debug.Log(hit);
                     //this.gameObject.GetComponent<NewBehaviourScript>().enabled = true;
 
