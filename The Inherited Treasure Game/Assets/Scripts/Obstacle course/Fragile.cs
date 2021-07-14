@@ -29,7 +29,9 @@ public class Fragile : MonoBehaviour
     {
         if (beeingTouched && time < 5){
             time += Time.deltaTime;
-        }else if (!beeingTouched && transform.position.y < -6 && time > -2) {
+        }
+        else if (!beeingTouched && time > 0 && (transform.position.y < -6 || transform.position.y == 0))
+        {
             time -= Time.deltaTime;
         }
 

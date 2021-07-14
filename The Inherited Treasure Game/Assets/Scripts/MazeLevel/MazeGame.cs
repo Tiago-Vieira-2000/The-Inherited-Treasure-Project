@@ -52,10 +52,6 @@ public class MazeGame : MonoBehaviour
                 || time > maxTime) {
                 setFinished();
             }
-            if ((int)time % 75 == 0)
-            {
-                turnLightsRed();
-            }
         }
         else {
             //How many characters can pass to the next level
@@ -101,30 +97,6 @@ public class MazeGame : MonoBehaviour
                     gameOverMenu.Setup();
                 }
                 
-            }
-        }
-    }
-
-    /// <summary>
-    /// turns light rows as the game progresses
-    /// <summary>
-    void turnLightsRed()
-    {
-        int rows = 0;
-        float seconds = time;
-        while (seconds >= 75)
-        {
-            rows++;
-            seconds -= 75;
-        }
-        string name = ""+rows;
-        Light[] lights;
-        lights = FindObjectsOfType(typeof(Light)) as Light[];
-        foreach (Light light in lights)
-        {
-            if (light.name.Contains(name))
-            {
-                light.color = Color.red;
             }
         }
     }
