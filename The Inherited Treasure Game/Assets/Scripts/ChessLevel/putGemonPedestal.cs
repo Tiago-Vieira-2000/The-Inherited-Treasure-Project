@@ -30,6 +30,8 @@ public class putGemonPedestal : MonoBehaviour
                     Debug.Log("Pedestal recebeu a Gema");
                     playerDetected.GetComponent<player>().rb.isKinematic = true;
                     playerDetected.GetComponent<player>().Gem.SetActive(false);
+                    playerDetected.GetComponent<moveGrid>().enabled = false;
+                    playerDetected.GetComponent<PlayerChess>().enabled = false;
                     Gem.SetActive(true);
                     hasGem = true;
                 }
