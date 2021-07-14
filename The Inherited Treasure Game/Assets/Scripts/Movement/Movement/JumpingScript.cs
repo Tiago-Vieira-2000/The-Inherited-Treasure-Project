@@ -24,9 +24,6 @@ public class JumpingScript : MonoBehaviour
         float movementHorizontal = Input.GetAxis("Horizontal");
         float movementVertical = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(movementHorizontal, 0.0f, movementVertical);
-
-        rb.AddForce(movement * speed);
-
        
             if (Input.GetKeyDown(KeyCode.Space))
             {
