@@ -29,7 +29,6 @@ public class putGemonPedestal : MonoBehaviour
                 GameObject playerDetected = detectorP.GetComponent<playerDetector>().CollisionWith;
                 if(playerDetected.GetComponent<player>().hasGem){
                     Debug.Log("Pedestal recebeu a Gema");
-                    playerDetected.GetComponent<player>().rb.isKinematic = true;
                     playerDetected.GetComponent<player>().Gem.SetActive(false);
                     playerDetected.GetComponent<moveGrid>().enabled = false;
                     playerDetected.GetComponent<PlayerChess>().enabled = false;
