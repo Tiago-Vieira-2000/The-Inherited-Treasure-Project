@@ -8,6 +8,9 @@ public class putGemonPedestal : MonoBehaviour
     private bool hasGem;
     public GameObject Gem;
     // Start is called before the first frame update
+    /// <summary>
+    /// Initialize the variables
+    /// </summary>
     void Start()
     {
         Gem.SetActive(false);
@@ -15,6 +18,9 @@ public class putGemonPedestal : MonoBehaviour
     }
 
     // Update is called once per frame
+    /// <summary>
+    /// When a character stands in front of the pedestal, put the gem inside, and prevent that character from moving any further.
+    /// </summary>
     void Update()
     {
         if(detectorP.GetComponent<playerDetector>().EnteredTrigger){
