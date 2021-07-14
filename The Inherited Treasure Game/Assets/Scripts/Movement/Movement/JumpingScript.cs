@@ -30,15 +30,15 @@ public class JumpingScript : MonoBehaviour
        
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                anim.runtimeAnimatorController = jumpController as RuntimeAnimatorController;
-                if (this.gameObject.transform.position.y < 0.20000)
+                if (this.gameObject.transform.position.y < -1)
                 {
-                    anim.runtimeAnimatorController = idleController;
-                    rb.AddForce(new Vector3(0, 3f, 0), ForceMode.Impulse);
+                    rb.AddForce(new Vector3(0, 6f, 0), ForceMode.Impulse);
                 }
-            }
-        
+            
 
+        }
     }
+
 }
+
 
