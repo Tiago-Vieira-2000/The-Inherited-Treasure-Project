@@ -12,6 +12,8 @@ public class MazeGame : MonoBehaviour
     private bool finished = false;
     private int maxTime = 600;
     private int score = 0;
+    int diff;
+    int nPlayers;
     public SaveSystem startGame;
     public NextLevelMenu nextLevelMenu;
     public GameOver gameOverMenu;
@@ -29,13 +31,36 @@ public class MazeGame : MonoBehaviour
         //startGame.restartData();
         characterAmount = startGame.getPlayers();
         //characterAmount = 1;
-        DestroyUnnecessaryObjects();
-        KillCharacters();
+        //DestroyUnnecessaryObjects();
+        //KillCharacters();
         colours = new List<string>();
         colours.Add("yellow");
         colours.Add("blue");
         colours.Add("green");
         colours.Add("purple");
+        diff = startGame.getDifficultyLevel();
+        nPlayers = startGame.getPlayers();
+        if(diff == 2)
+        {
+            if (GameObject.FindGameObjectsWithTag("Player").Length > nPlayers)
+            {
+                for (int i = 4 - characterAmount; i > 0; i--)
+                {
+                    Destroy(GameObject.Find("Player" + i));
+                }
+            }
+        }
+        else if(diff == 3)
+        {
+            if(GameObject.FindGameObjectsWithTag("Player").Length > nPlayers)
+            {
+                for (int i = 4 - characterAmount; i > 0; i--)
+                {
+                    Destroy(GameObject.Find("Player" + i));
+                }
+            }
+        }
+        Time.timeScale = 0;
     }
 
     /// <summary>
