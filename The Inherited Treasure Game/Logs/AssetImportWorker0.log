@@ -174,3 +174,32 @@ System memory in use after: 60.5 MB.
 Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1636.
 Total: 2.488600 ms (FindLiveObjects: 0.227200 ms CreateObjectMapping: 0.070600 ms MarkObjects: 2.173400 ms  DeleteObjects: 0.015800 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 2581.644427 seconds.
+  path: Assets/Scenes/ChessLevel.unity
+  artifactKey: Guid(55b7d3233219aab44b52f77c1ae20a75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/ChessLevel.unity using Guid(55b7d3233219aab44b52f77c1ae20a75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84f4654db07b137f7fa46ce79faf414b') in 0.022691 seconds
+  Import took 0.032017 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001249 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.938 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.32 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1162 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 60.4 MB.
+System memory in use after: 60.5 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1639.
+Total: 3.132800 ms (FindLiveObjects: 0.276200 ms CreateObjectMapping: 0.118600 ms MarkObjects: 2.716900 ms  DeleteObjects: 0.019400 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
