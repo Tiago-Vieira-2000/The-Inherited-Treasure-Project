@@ -11,7 +11,7 @@ public class MindObstacle : MonoBehaviour
 
     void Start()
     {
-        for (int i = 1; i < Players.Count; i++)
+        for (int i = 0; i < Players.Count; i++)
         {
             Players[i].GetComponent<moveZAxis>().enabled = false;
         }
@@ -26,7 +26,7 @@ public class MindObstacle : MonoBehaviour
             currentPlayer = Players[0];
         }
 
-        for (int i = 1; i < Players.Count; i++)
+        for (int i = 0; i < Players.Count; i++)
         {
             if (Players[i] == null)
             {
@@ -36,6 +36,10 @@ public class MindObstacle : MonoBehaviour
     }
     public void changePlayer(GameObject player)
     {
+        if (currentPlayer == null)
+        {
+            currentPlayer = Players[0];
+        }
         currentPlayer.GetComponent<moveZAxis>().enabled = false;
         currentPlayer = player;
         currentPlayer.GetComponent<moveZAxis>().enabled = true;
@@ -50,7 +54,7 @@ public class MindObstacle : MonoBehaviour
     public void stopPlayers(GameObject player)
     {
         {
-            for (int i = 1; i < Players.Count; i++)
+            for (int i = 0; i < Players.Count; i++)
             {
                 if (!Players[i] == player)
                     Players[i].GetComponent<moveZAxis>().enabled = false;

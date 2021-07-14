@@ -7,6 +7,7 @@ public class PlayerChess : MonoBehaviour
     public MindChess mind;
     int layer_mask;
 
+    
     private void Start()
     {
         layer_mask = LayerMask.GetMask("Player");

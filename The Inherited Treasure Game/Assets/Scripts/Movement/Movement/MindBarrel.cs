@@ -12,7 +12,7 @@ public class MindBarrel : MonoBehaviour
 
     void Start()
     {
-        for (int i = 1; i < Players.Count; i++)
+        for (int i = 0; i < Players.Count; i++)
         {
             Players[i].GetComponent<JumpingScript>().enabled = false;
         }
@@ -27,7 +27,7 @@ public class MindBarrel : MonoBehaviour
             currentPlayer = Players[0];
         }
 
-        for (int i = 1; i < Players.Count; i++)
+        for (int i = 0; i < Players.Count; i++)
         {
             if (Players[i] == null)
             {
@@ -51,7 +51,7 @@ public class MindBarrel : MonoBehaviour
     public void stopPlayers(GameObject player)
     {
         {
-            for (int i = 1; i < Players.Count; i++)
+            for (int i = 0; i < Players.Count; i++)
             {
                 if (!Players[i] == player)
                     Players[i].GetComponent<JumpingScript>().enabled = false;
