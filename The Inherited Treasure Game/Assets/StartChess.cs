@@ -37,7 +37,7 @@ public class StartChess : MonoBehaviour
                 }
             }
         }
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
