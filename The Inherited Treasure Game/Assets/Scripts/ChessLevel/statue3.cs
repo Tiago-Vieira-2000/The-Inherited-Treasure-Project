@@ -14,7 +14,7 @@ public class statue3 : MonoBehaviour
     public Rigidbody rb;
     private bool moving;
     private bool math;
-    private bool done;
+    //private bool done;
     public bool hasGem;
     public GameObject detectorF;
     public GameObject detectorB;
@@ -30,7 +30,7 @@ public class statue3 : MonoBehaviour
         startDegree = 270;
         moving = true;
         math = false;
-        done = false;
+        //done = false;
         hasGem= true;
         //Variável para escolher aleatóriamente o padrão de rotação
         var randomInt = Random.Range(1,4);
@@ -116,10 +116,10 @@ public class statue3 : MonoBehaviour
     /// </summary>
     private void checkKill(){
         if(detectorF.GetComponent<playerDetector>().EnteredTrigger){
-            if(!moving && !done){
+            if(!moving){
                 Destroy(detectorF.GetComponent<playerDetector>().CollisionWith);
                 Debug.Log("Personagem Morreu pela estátua");
-                done=true;
+                //done=true;
             }
         }
     }   
@@ -129,7 +129,7 @@ public class statue3 : MonoBehaviour
     /// </summary>
     private void checkGem(){
         if(detectorB.GetComponent<playerDetector>().EnteredTrigger){
-            if(!moving && !done && hasGem){
+            if(!moving && hasGem){
                 GameObject playerDetected = detectorB.GetComponent<playerDetector>().CollisionWith;
                 if(playerDetected.GetComponent<player>().hasGem){
                     Debug.Log("Esta Personagem já tem uma gema");
@@ -142,7 +142,7 @@ public class statue3 : MonoBehaviour
                     Gem.SetActive(false);
                     hasGem=false;
                 }
-                done=true;
+                //done=true;
             }
         }
     }
