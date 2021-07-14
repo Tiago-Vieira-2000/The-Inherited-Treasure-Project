@@ -11,14 +11,41 @@ public class ObstacleCourseGame : MonoBehaviour
     public LevelCompletedMenu levelSingle;
     public LevelCompletedMenu gameOverSingle;
     public GameOver gameOverMenu;
+    int diff;
 
     void Start()
     {
         startGame = GetComponent<SaveSystem>();
-        //startGame.restartData();
         characterAmount = startGame.getPlayers();
+        diff = startGame.getDifficultyLevel();
+        if (diff == 2)
+        {
+            if (GameObject.FindGameObjectsWithTag("Player").Length > characterAmount)
+            {
+                for (int i = 4 - characterAmount; i > 0; i--)
+                {
+                    Destroy(GameObject.Find("Player" + i));
+                }
+            }
+        }
+        else if (diff == 3)
+        {
+            if (GameObject.FindGameObjectsWithTag("Player").Length > characterAmount)
+            {
+                for (int i = 4 - characterAmount; i > 0; i--)
+                {
+                    Destroy(GameObject.Find("Player" + i));
+                }
+            }
+        }
+        Time.timeScale = 0;
+
+
+        //startGame = GetComponent<SaveSystem>();
+        //startGame.restartData();
+        //characterAmount = startGame.getPlayers();
         //characterAmount = 1;
-        KillCharacters();
+        //KillCharacters();
     }
 
     /// <summary>
