@@ -62,7 +62,7 @@ public class ObstacleCourseGame : MonoBehaviour
     {
         for (int i = 4 - characterAmount; i > 0; i--)
         {
-            turnLightsRed("Player" + i);
+            turnLightsColor("Player" + i, Color.red);
             Destroy(GameObject.Find("Player" + i));
         }
     }
@@ -72,7 +72,7 @@ public class ObstacleCourseGame : MonoBehaviour
     /// </summary>
     /// <param name="name">Name of the character that died</param>
     public void characterDied(string name) {
-        turnLightsRed(name);
+        turnLightsColor(name, Color.red);
         characterAmount--;
     }
 
@@ -80,14 +80,14 @@ public class ObstacleCourseGame : MonoBehaviour
     /// Turn a Light row red
     /// </summary>
     /// <param name="name">Name of the character that died</param>
-    void turnLightsRed(string name) {
+    public void turnLightsColor(string name, Color color) {
         Light[] lights;
         lights = FindObjectsOfType(typeof(Light)) as Light[];
         foreach (Light light in lights)
         {
             if (light.name.Contains(name.Remove(0, 6)))
             {
-                light.color = Color.red;
+                light.color = color;
             }
         }        
     }

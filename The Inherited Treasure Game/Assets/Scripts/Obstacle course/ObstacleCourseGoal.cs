@@ -14,6 +14,7 @@ public class ObstacleCourseGoal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            GameObject.Find("Platform").GetComponent<ObstacleCourseGame>().turnLightsColor(other.name, Color.green);
             finishedPlayers++;
         }
     }

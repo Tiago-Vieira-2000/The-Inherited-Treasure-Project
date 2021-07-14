@@ -9,7 +9,7 @@ public class Swinging : MonoBehaviour
 
     void Start()
     {
-        speed = Random.Range(1f, 3f);
+        speed = Random.Range(1f, 2f);
         originalPosition = transform.position;
     }
 
