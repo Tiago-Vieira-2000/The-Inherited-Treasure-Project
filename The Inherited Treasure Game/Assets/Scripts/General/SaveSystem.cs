@@ -11,6 +11,7 @@ public class SaveSystem : MonoBehaviour
 
     int sceneNumber;
 
+  
     /// <summary>
     /// Save Game Data
     /// </summary>
@@ -19,12 +20,11 @@ public class SaveSystem : MonoBehaviour
         sceneNumber = SceneManager.GetActiveScene().buildIndex;
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/Data.dat");
+        FileStream file = File.Open(Application.persistentDataPath + "/Data.dat", FileMode.Open);
         PlayerData data = new PlayerData();
 
         data.SceneNumber = sceneNumber;
         data.numberPlayers = GameObject.FindGameObjectsWithTag("Player").Length;
-        data.score = 0;
 
         bf.Serialize(file, data);
         file.Close();
@@ -47,15 +47,20 @@ public class SaveSystem : MonoBehaviour
     /// <param name="score"></param>
     public void nextLevelData(double score)
     {
+        double newScore = GetScore();
+        Debug.Log("Current Score " + GetScore());
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/Data.dat");
+        FileStream file = File.Open(Application.persistentDataPath + "/Data.dat", FileMode.Open);
         PlayerData data = new PlayerData();
 
         data.numberPlayers = GameObject.FindGameObjectsWithTag("Player").Length;
-        data.score += score;
-
+        data.score = newScore + score ;
         bf.Serialize(file, data);
         file.Close();
+
+        Debug.Log("New Score = " + data.score);
+
+
     }
 
     /// <summary>
@@ -156,7 +161,7 @@ public class SaveSystem : MonoBehaviour
         sceneNumber = SceneManager.GetActiveScene().buildIndex;
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/Data.dat", FileMode.Open);
+        FileStream file = File.Create(Application.persistentDataPath + "/Data.dat");
         PlayerData data = new PlayerData();
 
         data.SceneNumber = 0;
@@ -167,7 +172,7 @@ public class SaveSystem : MonoBehaviour
         bf.Serialize(file, data);
         file.Close();
     }
-
+    
     /// <summary>
     /// Loads saved game data
     /// </summary>
