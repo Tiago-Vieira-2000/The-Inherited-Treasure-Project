@@ -5,7 +5,7 @@ using UnityEngine;
 public class moveZAxis : MonoBehaviour
 {
 
-    float speed = 10f;
+    float speed = 6f;
     public Rigidbody player;
 
     private void Start()
