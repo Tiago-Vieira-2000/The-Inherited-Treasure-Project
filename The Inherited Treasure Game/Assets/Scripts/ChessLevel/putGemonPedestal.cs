@@ -7,6 +7,7 @@ public class putGemonPedestal : MonoBehaviour
     public GameObject detectorP;
     private bool hasGem;
     public GameObject Gem;
+    public Light light;
     // Start is called before the first frame update
     /// <summary>
     /// Initialize the variables
@@ -34,6 +35,8 @@ public class putGemonPedestal : MonoBehaviour
                     playerDetected.GetComponent<PlayerChess>().enabled = false;
                     Gem.SetActive(true);
                     hasGem = true;
+                    playerDetected.GetComponent<player>().hasGem = false;
+                    light.GetComponent<Light>().enabled = true;
                 }
             }
         }
