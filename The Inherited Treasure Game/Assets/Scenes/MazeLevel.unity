@@ -14068,7 +14068,6 @@ MonoBehaviour:
   - {fileID: 441300546}
   - {fileID: 1771116408}
   - {fileID: 46377789}
-  - {fileID: 0}
   currentPlayer: {fileID: 0}
 --- !u!4 &726507422
 Transform:

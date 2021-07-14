@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class defeatChess : MonoBehaviour
 {
+    public GameOver gameOverMenu;
+    public LevelCompletedMenu gameOverSingle;
+    public SaveSystem saveSystem;
+
+    private void Start()
+    {
+        saveSystem = GetComponent<SaveSystem>();
+    }
     // Update is called once per frame
     void Update()
     {
         if(GameObject.FindGameObjectsWithTag("Player").Length == 0){
-            Debug.Log("All characters have died, rip :)");
             GameObject.Find("mind").GetComponent<MindChess>().enabled = false;
-            //Time.timeScale = 0;
-            enabled = false;
+            string typeGame = saveSystem.getGameType();
+            if (typeGame == "FULL")
+            {
+                gameOverMenu.Setup();
+            }
+            else if (typeGame == "SINGLE")
+            {
+                gameOverSingle.Setup();
+            }
         }
     }
 }
