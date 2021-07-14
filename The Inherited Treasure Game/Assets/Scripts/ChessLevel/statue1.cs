@@ -118,8 +118,9 @@ public class statue1 : MonoBehaviour
                 else
                 {
                     Debug.Log("Personagem Apanhou a Gema");
-                    playerDetected.GetComponent<player>().hasGem = true;
                     playerDetected.GetComponent<player>().Gem.SetActive(true);
+                    playerDetected.GetComponent<player>().hasGem = true;
+                    
                     Gem.SetActive(false);
                     hasGem=false;
                 }
