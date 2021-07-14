@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine; 
+using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.SceneManagement;
+using System.IO;
+
+[RequireComponent(typeof(SaveSystem))]
+
 
 public class GameOver : MonoBehaviour
 {
-    public SaveSystem gameOver;
+    public SaveSystem loadSave;
     public GameObject saveButton;
-
-    private void Start()
-    {
-       gameOver = GetComponent<SaveSystem>();  
-    }
 
     /// <summary>
     /// Sets up game over menu
     /// </summary>
     public void Setup()
     {
-        int diff = gameOver.getDifficultyLevel();
+        int diff = loadSave.getDifficultyLevel();
+        loadSave = GetComponent<SaveSystem>();
         gameObject.SetActive(true);
         Time.timeScale = 0;
         if(diff == 3)
@@ -41,18 +42,17 @@ public class GameOver : MonoBehaviour
     /// <summary>
     /// Loads last save
     /// </summary>
-    public void loadLastSave()
+    public void loadGame()
     {
-        gameOver = GetComponent<SaveSystem>();
-        if(gameOver == null)
+        Time.timeScale = 1;
+        if (!File.Exists(Application.persistentDataPath + "/Data.dat"))
         {
-            Debug.Log("BOOOOOOOOOOOOO");
+            loadSave.LoadData();
         }
         else
         {
-            gameOver.LoadData();
-            Time.timeScale = 1;
+            SceneManager.LoadScene("MainMenu");
         }
-       
+        
     }
 }

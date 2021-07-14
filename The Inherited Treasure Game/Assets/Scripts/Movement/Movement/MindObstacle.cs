@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MindScript : MonoBehaviour
+public class MindObstacle : MonoBehaviour
 {
     public List<GameObject> Players;
     [SerializeField]
@@ -11,21 +11,12 @@ public class MindScript : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0 ; i < Players.Count; i++)
+        for (int i = 0; i < Players.Count; i++)
         {
-            Players[i].GetComponent<NewBehaviourScript>().enabled = false;
+            Players[i].GetComponent<moveZAxis>().enabled = false;
         }
 
         currentPlayer = Players[0];
-    }
-
-    public void changePlayer(GameObject player){
-        currentPlayer.GetComponent<NewBehaviourScript>().enabled = false;
-        currentPlayer = player;
-        currentPlayer.GetComponent<NewBehaviourScript>().enabled = true;
-        
-        stopPlayers(currentPlayer);
-    
     }
 
     private void Update()
@@ -43,17 +34,33 @@ public class MindScript : MonoBehaviour
             }
         }
     }
+    public void changePlayer(GameObject player)
+    {
+        if (currentPlayer == null)
+        {
+            currentPlayer = Players[0];
+        }
+        currentPlayer.GetComponent<moveZAxis>().enabled = false;
+        currentPlayer = player;
+        currentPlayer.GetComponent<moveZAxis>().enabled = true;
 
+        stopPlayers(currentPlayer);
+
+    }
+    public void removePlayer(GameObject player)
+    {
+        Players.Remove(player);
+    }
     public void stopPlayers(GameObject player)
     {
         {
             for (int i = 0; i < Players.Count; i++)
             {
                 if (!Players[i] == player)
-                    Players[i].GetComponent<NewBehaviourScript>().enabled = false;
+                    Players[i].GetComponent<moveZAxis>().enabled = false;
             }
 
-            
+
         }
 
     }
