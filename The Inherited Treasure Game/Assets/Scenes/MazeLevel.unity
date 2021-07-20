@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ddd74192ce5e54e9db5ead59155a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 46377793}
 --- !u!4 &46377791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5299645823720771534, guid: beb9e839b531a744c877a785deeaa302, type: 3}
@@ -7713,7 +7713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ddd74192ce5e54e9db5ead59155a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 441300550}
 --- !u!54 &441300548
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16838,7 +16838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ddd74192ce5e54e9db5ead59155a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 1160572308}
 --- !u!54 &1160572306
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23374,7 +23374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ddd74192ce5e54e9db5ead59155a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 1771116412}
 --- !u!54 &1771116410
 Rigidbody:
   m_ObjectHideFlags: 0
